@@ -6,7 +6,7 @@ export const SharePlay = () => {
   return (
     <div className="flex flex-col  md:flex-row items-center justify-between py-8 md:py-16 px-4 md:px-8 max-w-7xl mx-auto gap-4 md:gap-8 bg-transparent md:-mt-36 mb-16 md:mb-30">
       {/* Logo/Number section */}
-      <div className="w-full md:w-1/2 relative mt-28 md:mt-0">
+      <div className="w-full md:w-1/2 relative mt-44 md:mt-0">
         <div className="relative  h-[250px] md:h-[450px] w-full">
           <Image
             src={The10Logo}
