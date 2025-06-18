@@ -14,7 +14,7 @@ function VideoSection() {
   const closeModal = () => setIsOpen(false);
 
   return (
-    <section className="relative  flex justify-center py-16 px-4 md:px-8 lg:px-16">
+    <section className="relative  flex justify-center px-4 md:px-8 lg:px-16">
       <div
         className="relative w-full max-w-6xl aspect-video bg-gray-300 rounded-lg overflow-hidden cursor-pointer shadow-lg"
         onClick={openModal}
