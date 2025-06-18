@@ -30,3 +30,11 @@ h1, h2, h3, h4, h5, h6 , button{
   font-family: 'Anton', Arial, Helvetica, sans-serif;
   letter-spacing: 0.01em;
 }
+
+.bg-noise {
+  background-image: url('/noise.png');
+  background-repeat: repeat;
+  background-size: 200px;
+}
+
+

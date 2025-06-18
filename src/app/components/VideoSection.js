@@ -14,7 +14,7 @@ function VideoSection() {
   const closeModal = () => setIsOpen(false);
 
   return (
-    <section className="relative flex justify-center py-16 px-4 md:px-8 lg:px-16">
+    <section className="relative  flex justify-center py-16 px-4 md:px-8 lg:px-16">
       <div
         className="relative w-full max-w-6xl aspect-video bg-gray-300 rounded-lg overflow-hidden cursor-pointer shadow-lg"
         onClick={openModal}
@@ -26,7 +26,7 @@ function VideoSection() {
           objectFit="cover"
           className="rounded-lg"
         />
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+        <div className=" inset-0 flex items-center justify-center bg-black bg-opacity-30">
           <button className="p-6 rounded-full bg-white bg-opacity-80 hover:bg-opacity-100 transition-all duration-300">
             <svg width="28" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M27.2281 14.5429L2.83548 0.540108C2.55392 0.378959 2.21325 0.288086 1.86178 0.289196C1.51032 0.290306 1.16972 0.383321 0.888506 0.546327C0.320448 0.871927 0 1.50346 0 2.18958V29.8104C0 30.4965 0.320448 31.1281 0.888506 31.4537C1.45656 31.7793 2.20367 31.7793 2.77173 31.4537L27.1643 17.451C27.4459 17.2898 27.6806 17.0494 27.8483 16.7584C28.0161 16.4674 28.1121 16.1345 28.1293 15.7915C28.1465 15.4485 28.0845 15.1091 27.9482 14.7952C27.8118 14.4813 27.5991 14.2001 27.3207 13.9772L27.2281 14.5429Z" fill="#1A202C"/>
@@ -68,6 +68,7 @@ function VideoSection() {
           </div>
         </div>
       )}
+      
     </section>
   );
 }
