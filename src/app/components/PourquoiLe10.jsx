@@ -38,21 +38,21 @@ export const PourquoiLe10 = () => {
   ];
 
   return (
-    <div className="w-full   relative flex flex-col justify-center items-center py-[120px] px-[70px] gap-[79px]"
+    <div className="w-full relative flex flex-col justify-center items-center py-10 sm:py-16 md:py-20 lg:py-[120px] px-4 sm:px-6 md:px-10 lg:px-[70px] gap-8 sm:gap-12 md:gap-16 lg:gap-[79px]"
       style={{
         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage.src})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        minHeight: '924px',
+        minHeight: 'auto',
       }}>
       {/* Heading and intro section */}
-      <div className="max-w-9xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="max-w-9xl w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
         <div>
-          <h2 className="text-6xl md:text-7xl font-bold text-white ">Pourquoi le 10 ?</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center md:text-left">Pourquoi le 10 ?</h2>
         </div>
-        <div className="text-white/80">
-          <p className="text-lg">
+        <div className="text-white/80 mt-4 md:mt-0">
+          <p className="text-base sm:text-lg text-center md:text-left">
             Lorem ipsum dolor sit amet consectetur. At aliquet turpis et ac praesent.
             Senectus convallis lacus diam ut. Felis massa mauris proin at. Tempor vestibulum ac dui egestas
             duis nisl dignissim lorem pharetra. Eleifend ut congue at blandit adipiscing massa.
@@ -63,11 +63,11 @@ export const PourquoiLe10 = () => {
 
       {/* Feature cards section */}
       <div className="flex justify-center w-full">
-        <div className="max-w-9xl w-full flex flex-wrap justify-center gap-48">
+        <div className="max-w-9xl w-full flex flex-col sm:flex-row flex-wrap justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-48">
           {cardsData.map((card, index) => (
             <div
               key={index}
-              className="w-[400px] h-[500px] rounded-lg p-24 flex flex-col justify-between items-center relative overflow-hidden"
+              className="w-full sm:w-[300px] md:w-[350px] lg:w-[400px] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-lg p-16 sm:p-8 md:p-12 lg:p-24 flex flex-col justify-between items-center relative overflow-hidden mx-auto sm:mx-0"
               style={{
                 backgroundImage: `url(${card.background.src})`,
               }}
@@ -75,9 +75,9 @@ export const PourquoiLe10 = () => {
               <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay pointer-events-none"></div>
 
               {/* Content wrapper with equal spacing */}
-              <div className="flex flex-col justify-between items-center h-full py-1 ">
+              <div className="flex flex-col justify-between items-center h-full py-1">
                 {/* Icon */}
-                <div className="relative z-10 w-20 h-20">
+                <div className="relative z-10 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20">
                   <Image
                     src={card.icon}
                     alt={card.alt}
@@ -88,10 +88,10 @@ export const PourquoiLe10 = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-3xl font-bold text-center text-black relative z-10">{card.title}</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-black relative z-10">{card.title}</h3>
 
                 {/* Description */}
-                <p className="text-center relative z-10 text-gray-800 max-w-xs">
+                <p className="text-center relative z-10 text-gray-800 max-w-xs text-sm sm:text-base">
                   {card.description}
                 </p>
               </div>

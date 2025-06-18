@@ -37,7 +37,7 @@ const Stats = () => {
       <div className="w-full py-12 md:py-16 lg:py-24 px-4 md:px-6 lg:px-12 xl:px-20 overflow-hidden my-8 md:my-12 lg:my-16 relative">
         <div className="max-w-9xl mx-auto relative z-10">
           {/* Stats and Phone Display */}
-          <div className="flex flex-col lg:flex-row justify-between items-center mb-24 md:mb-32 lg:mb-44">
+          <div className="flex flex-col lg:flex-row justify-between items-center  md:mb-32 lg:mb-44">
             {/* Stats Cards */}
             <div className="w-full lg:w-1/2 space-y-4 md:space-y-6 mb-12 md:mb-16 lg:mb-0">
               <div className="mb-8 md:mb-12 lg:mb-14">
@@ -62,7 +62,7 @@ const Stats = () => {
                       alt={stat.platform}
                       width={40}
                       height={40}
-                      className="md:w-12 md:h-12"
+                      className="md:w-12 md:h-12 "
                     />
                   </div>
                   <div className="flex flex-col sm:flex-row sm:items-center w-full">
@@ -79,7 +79,7 @@ const Stats = () => {
 
             {/* Phone Mockup */}
             <div className="w-full lg:w-1/2 flex justify-center  lg:justify-end relative">
-              <div className="relative w-[300px] h-[256px] sm:w-[400px] sm:h-[341px] md:w-[600px] md:h-[511px] lg:w-[750px] lg:h-[639px] xl:w-[916px] xl:h-[780px]">
+              <div className="relative w-[400px] h-[356px] sm:w-[400px] sm:h-[341px] md:w-[600px] md:h-[511px] lg:w-[750px] lg:h-[639px] xl:w-[916px] xl:h-[780px]">
                 <Image
                   src={phoneImage}
                   alt="Le10 Mobile App"

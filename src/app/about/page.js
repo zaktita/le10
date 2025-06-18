@@ -51,10 +51,10 @@ export default function AboutPage() {
           <Stats />
         </div>
 
-        <div className="block lg:hidden">
+        {/* <div className="block lg:hidden">
           <PourquoiLe10 />
           <Stats />
-        </div>
+        </div> */}
         <PourquoiCollaborer />
           
         <Comment_travailler_ensemble />
