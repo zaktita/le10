@@ -1,11 +1,38 @@
-import React from 'react'
+'use client';
+import React, { useEffect, useState, useRef } from 'react'
 import UnionImage from '../../assets/Union.png'
 import DiamondOrange from '../../assets/_Path_.svg'
 import DiamondWhite from '../../assets/_Path2_.svg'
 
 const Comment_travailler_ensemble = () => {
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef(null);
+  
+  useEffect(() => {
+    // Create intersection observer to detect when section enters viewport
+    const observer = new IntersectionObserver((entries) => {
+      const [entry] = entries;
+      setIsInView(entry.isIntersecting);
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className='min-h-screen bg-black text-white flex flex-col md:flex-row'>
+    <div 
+      ref={sectionRef}
+      className='min-h-screen bg-black text-white flex flex-col md:flex-row'>
 
       {/* Left side - Title */}
       <div className='w-full md:w-1/2 relative min-h-[30vh] md:min-h-screen flex items-start justify-center'
@@ -19,7 +46,8 @@ const Comment_travailler_ensemble = () => {
         }}
       >
         <div className='relative z-10 p-8 md:p-16 pt-16 md:pt-24 flex items-start'>
-          <h1 className='text-3xl sm:text-4xl md:text-6xl font-bold leading-tight text-white'>
+          <h1 className={`text-3xl sm:text-4xl md:text-6xl font-bold leading-tight text-white transition-opacity duration-700 ${isInView ? 'opacity-100' : 'opacity-0'}`}
+               style={{ transitionDelay: '300ms' }}>
             Comment<br />
             travailler ensemble ?
           </h1>
@@ -29,9 +57,11 @@ const Comment_travailler_ensemble = () => {
       {/* Right side - Services list */}
       <div className='w-full md:w-1/2 flex flex-col justify-center p-8 md:p-16 space-y-8 md:space-y-12 bg-black'>
         {/* Sponsoring */}
-        <div className='flex items-start'>
+        <div className={`flex items-start transition-opacity duration-700 ${isInView ? 'opacity-100' : 'opacity-0'}`}
+             style={{ transitionDelay: '400ms' }}>
           <div className='flex flex-col items-center'>
-            <img src={DiamondOrange.src} alt="Diamond" className='w-[40px] md:w-[55px] h-[22px] md:h-[30px] flex-shrink-0' />
+            <img src={DiamondOrange.src} alt="Diamond" className={`w-[40px] md:w-[55px] h-[22px] md:h-[30px] flex-shrink-0 transition-transform duration-500 ${isInView ? 'scale-100' : 'scale-0'}`}
+                 style={{ transitionDelay: '450ms' }} />
             <div className='w-[1px] h-16 md:h-20 bg-gray-500 mt-2 md:mt-4'></div>
           </div>
           <div className='ml-3 md:ml-4'>
@@ -43,9 +73,11 @@ const Comment_travailler_ensemble = () => {
         </div>
 
         {/* Placement de produit */}
-        <div className='flex items-start'>
+        <div className={`flex items-start transition-opacity duration-700 ${isInView ? 'opacity-100' : 'opacity-0'}`}
+             style={{ transitionDelay: '500ms' }}>
           <div className='flex flex-col items-center'>
-            <img src={DiamondWhite.src} alt="Diamond" className='w-[40px] md:w-[55px] h-[22px] md:h-[30px] flex-shrink-0' />
+            <img src={DiamondWhite.src} alt="Diamond" className={`w-[40px] md:w-[55px] h-[22px] md:h-[30px] flex-shrink-0 transition-transform duration-500 ${isInView ? 'scale-100' : 'scale-0'}`}
+                 style={{ transitionDelay: '550ms' }} />
             <div className='w-[1px] h-16 md:h-20 bg-gray-500 mt-2 md:mt-4'></div>
           </div>
           <div className='ml-3 md:ml-4'>
@@ -62,9 +94,11 @@ const Comment_travailler_ensemble = () => {
         </div>
 
         {/* Publi-reportage */}
-        <div className='flex items-start'>
+        <div className={`flex items-start transition-opacity duration-700 ${isInView ? 'opacity-100' : 'opacity-0'}`}
+             style={{ transitionDelay: '600ms' }}>
           <div className='flex flex-col items-center'>
-            <img src={DiamondOrange.src} alt="Diamond" className='w-[40px] md:w-[55px] h-[22px] md:h-[30px] flex-shrink-0' />
+            <img src={DiamondOrange.src} alt="Diamond" className={`w-[40px] md:w-[55px] h-[22px] md:h-[30px] flex-shrink-0 transition-transform duration-500 ${isInView ? 'scale-100' : 'scale-0'}`}
+                 style={{ transitionDelay: '650ms' }} />
             <div className='w-[1px] h-16 md:h-20 bg-gray-500 mt-2 md:mt-4'></div>
           </div>
           <div className='ml-3 md:ml-4'>
@@ -77,9 +111,11 @@ const Comment_travailler_ensemble = () => {
         </div>
 
         {/* Production de contenu */}
-        <div className='flex items-start'>
+        <div className={`flex items-start transition-opacity duration-700 ${isInView ? 'opacity-100' : 'opacity-0'}`}
+             style={{ transitionDelay: '700ms' }}>
           <div className='flex flex-col items-center'>
-            <img src={DiamondWhite.src} alt="Diamond" className='w-[40px] md:w-[55px] h-[22px] md:h-[30px] flex-shrink-0' />
+            <img src={DiamondWhite.src} alt="Diamond" className={`w-[40px] md:w-[55px] h-[22px] md:h-[30px] flex-shrink-0 transition-transform duration-500 ${isInView ? 'scale-100' : 'scale-0'}`}
+                 style={{ transitionDelay: '750ms' }} />
             <div className='w-[1px] h-16 md:h-20 bg-gray-500 mt-2 md:mt-4'></div>
           </div>
           <div className='ml-3 md:ml-4'>
@@ -96,9 +132,11 @@ const Comment_travailler_ensemble = () => {
         </div>
 
         {/* Événementiel sportif */}
-        <div className='flex items-start'>
+        <div className={`flex items-start transition-opacity duration-700 ${isInView ? 'opacity-100' : 'opacity-0'}`}
+             style={{ transitionDelay: '800ms' }}>
           <div className='flex flex-col items-center'>
-            <img src={DiamondOrange.src} alt="Diamond" className='w-[40px] md:w-[55px] h-[22px] md:h-[30px] flex-shrink-0' />
+            <img src={DiamondOrange.src} alt="Diamond" className={`w-[40px] md:w-[55px] h-[22px] md:h-[30px] flex-shrink-0 transition-transform duration-500 ${isInView ? 'scale-100' : 'scale-0'}`}
+                 style={{ transitionDelay: '850ms' }} />
             <div className='w-[1px] h-16 md:h-20 bg-gray-500 mt-2 md:mt-4'></div>
           </div>
           <div className='ml-3 md:ml-4'>
@@ -110,6 +148,19 @@ const Comment_travailler_ensemble = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+
+        img.w-\\[40px\\].md\\:w-\\[55px\\].h-\\[22px\\].md\\:h-\\[30px\\].flex-shrink-0 {
+          animation: ${isInView ? 'pulse 3s infinite' : 'none'};
+          animation-delay: 1000ms;
+        }
+      `}</style>
     </div>
   )
 }

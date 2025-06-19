@@ -1,4 +1,5 @@
-import React from 'react'
+'use client';
+import React, { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import backgroundImage from '../../assets/pourquoile10.jpg'
 import card1 from '../../assets/card_1_background.png'
@@ -12,6 +13,30 @@ import visibilityIcon from '../../assets/streamline_screen-broadcast.svg'
 
 
 export const PourquoiLe10 = () => {
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef(null);
+  
+  useEffect(() => {
+    // Create intersection observer to detect when section enters and leaves viewport
+    const observer = new IntersectionObserver((entries) => {
+      const [entry] = entries;
+      setIsInView(entry.isIntersecting);
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   // Card data for mapping
   const cardsData = [
     {
@@ -38,7 +63,9 @@ export const PourquoiLe10 = () => {
   ];
 
   return (
-    <div className="w-full relative flex flex-col justify-center items-center py-10 sm:py-16 md:py-20 lg:py-[120px] px-4 sm:px-6 md:px-10 lg:px-[70px] gap-8 sm:gap-12 md:gap-16 lg:gap-[79px]"
+    <div 
+      ref={sectionRef}
+      className="w-full relative flex flex-col justify-center items-center py-10 sm:py-16 md:py-20 lg:py-[120px] px-4 sm:px-6 md:px-10 lg:px-[70px] gap-8 sm:gap-12 md:gap-16 lg:gap-[79px]"
       style={{
         backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundImage.src})`,
         backgroundSize: 'cover',
@@ -47,7 +74,8 @@ export const PourquoiLe10 = () => {
         minHeight: 'auto',
       }}>
       {/* Heading and intro section */}
-      <div className="max-w-9xl w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+      <div className={`max-w-9xl w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+           style={{ transitionDelay: '200ms' }}>
         <div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center md:text-left">Pourquoi le 10 ?</h2>
         </div>
@@ -67,9 +95,10 @@ export const PourquoiLe10 = () => {
           {cardsData.map((card, index) => (
             <div
               key={index}
-              className="w-full sm:w-[300px] md:w-[350px] lg:w-[400px] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-lg p-16 sm:p-8 md:p-12 lg:p-24 flex flex-col justify-between items-center relative overflow-hidden mx-auto sm:mx-0"
+              className={`w-full sm:w-[300px] md:w-[350px] lg:w-[400px] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-lg p-16 sm:p-8 md:p-12 lg:p-24 flex flex-col justify-between items-center relative overflow-hidden mx-auto sm:mx-0 transition-all duration-700 hover:scale-105 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
               style={{
                 backgroundImage: `url(${card.background.src})`,
+                transitionDelay: `${400 + index * 150}ms`,
               }}
             >
               <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay pointer-events-none"></div>
@@ -77,7 +106,7 @@ export const PourquoiLe10 = () => {
               {/* Content wrapper with equal spacing */}
               <div className="flex flex-col justify-between items-center h-full py-1">
                 {/* Icon */}
-                <div className="relative z-10 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20">
+                <div className="relative z-10 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform duration-300 hover:scale-110">
                   <Image
                     src={card.icon}
                     alt={card.alt}
@@ -88,10 +117,10 @@ export const PourquoiLe10 = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-black relative z-10">{card.title}</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-black relative z-10 transition-transform duration-300 hover:scale-105">{card.title}</h3>
 
                 {/* Description */}
-                <p className="text-center relative z-10 text-gray-800 max-w-xs text-sm sm:text-base">
+                <p className="text-center relative z-10 text-gray-800 max-w-xs text-sm sm:text-base transition-opacity duration-300 hover:opacity-90">
                   {card.description}
                 </p>
               </div>
@@ -99,6 +128,18 @@ export const PourquoiLe10 = () => {
           ))}
         </div>
       </div>
+      
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeOut {
+          from { opacity: 1; transform: translateY(0); }
+          to { opacity: 0; transform: translateY(-20px); }
+        }
+      `}</style>
     </div>
   )
 }

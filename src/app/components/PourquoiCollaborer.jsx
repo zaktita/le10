@@ -1,5 +1,8 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import bgImage1 from '../../assets/img1.png';
 import bgImage2 from '../../assets/img2.jpg'; 
 import bgImage3 from '../../assets/img3.png'; 
@@ -32,11 +35,95 @@ const PourquoiCollaborer = () => {
         }
     ];
 
+    // Animation controls
+    const headerControls = useAnimation();
+    const cardsControls = useAnimation();
+    
+    // Refs for intersection observer
+    const [headerRef, headerInView] = useInView({
+        triggerOnce: true,
+        threshold: 0.2,
+    });
+    
+    const [cardsRef, cardsInView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+    
+    // Animation variants
+    const headerVariants = {
+        hidden: { 
+            opacity: 0, 
+            y: 50 
+        },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { 
+                duration: 0.6, 
+                ease: "easeOut" 
+            } 
+        },
+        exit: { 
+            opacity: 0, 
+            y: -20,
+            transition: { 
+                duration: 0.4 
+            } 
+        }
+    };
+    
+    const cardVariants = {
+        hidden: { 
+            opacity: 0, 
+            y: 70 
+        },
+        visible: (i) => ({ 
+            opacity: 1, 
+            y: 0,
+            transition: { 
+                duration: 0.6, 
+                delay: i * 0.2,
+                ease: "easeOut" 
+            } 
+        }),
+        exit: (i) => ({ 
+            opacity: 0, 
+            y: 30,
+            transition: { 
+                duration: 0.4,
+                delay: i * 0.1 
+            } 
+        })
+    };
+    
+    // Trigger animations when elements come into view
+    useEffect(() => {
+        if (headerInView) {
+            headerControls.start('visible');
+        } else {
+            headerControls.start('hidden');
+        }
+        
+        if (cardsInView) {
+            cardsControls.start('visible');
+        } else {
+            cardsControls.start('hidden');
+        }
+    }, [headerInView, cardsInView, headerControls, cardsControls]);
+
     return (
         <div className="w-full bg-black py-6 md:py-8 lg:py-16 px-4 md:px-6 lg:px-12 xl:px-20">
             <div className="max-w-9xl mx-auto px-3 md:px-6 lg:px-8 xl:px-12">
                 {/* Header Section */}
-                <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8 my-8 md:my-16 lg:my-24 xl:my-36">
+                <motion.div 
+                    ref={headerRef}
+                    className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8 my-8 md:my-16 lg:my-24 xl:my-36"
+                    initial="hidden"
+                    animate={headerControls}
+                    exit="exit"
+                    variants={headerVariants}
+                >
                     <div>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
                             Pourquoi le collaborer ?
@@ -47,13 +134,21 @@ const PourquoiCollaborer = () => {
                            LE 10, c'est plus qu'un média sportif : c'est le reflet d'une génération qui vit le sport avec passion, fierté et créativité. En collaborant avec nous, vous connectez votre marque à une communauté engagée, portée par des événements historiques, des formats innovants, et des valeurs fortes : inclusion, proximité, et impact culturel.
                         </p>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+                <motion.div 
+                    ref={cardsRef}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8"
+                    initial="hidden"
+                    animate={cardsControls}
+                    exit="exit"
+                >
                     {collaborationCards.map((card, index) => (
-                        <div
+                        <motion.div
                             key={index}
+                            custom={index}
+                            variants={cardVariants}
                             className={`${card.bgColor} rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden relative min-h-[500px] sm:min-h-[600px] md:min-h-[650px] lg:min-h-[700px] group hover:transform hover:scale-[1.02] transition-all duration-300`}
                         >
                             {/* Background Image */}
@@ -86,9 +181,9 @@ const PourquoiCollaborer = () => {
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </div>
     );

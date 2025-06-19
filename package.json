@@ -11,9 +11,11 @@
   "dependencies": {
     "@fontsource/anton": "^5.2.5",
     "@fontsource/lato": "^5.2.5",
+    "framer-motion": "^12.18.1",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-intersection-observer": "^9.16.0",
     "react-player": "^2.16.0",
     "swr": "^2.3.3"
   },
