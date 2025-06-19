@@ -9,16 +9,51 @@ import { Anton, Lato } from 'next/font/google';
 import { useState } from 'react';
 import PodcastsSection from './components/PodcastsSection';
 import NavBar from './components/NavBar';
-
+import testimage from '../assets/test.jpg'
+import testimage2 from '../assets/test2.jpg'
+import testimage3 from '../assets/test3.jpg'
+import testimage4 from '../assets/test4.jpg'
+import actualités from '../assets/actualités.jpg'
+import actualités2 from '../assets/actualités2.jpg'
+import actualités3 from '../assets/actualités3.jpg'
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const contentCards = [
+    {
+      id: 1,
+      image: testimage,
+      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
+      category: "LOREM",
+      categoryColor: "bg-[#FFB43D]"
+    },
+    {
+      id: 2,
+      image: testimage2,
+      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
+      category: "SPORTS",
+      categoryColor: "bg-green-500"
+    },
+    {
+      id: 3,
+      image: testimage3,
+      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
+      category: "NEWS",
+      categoryColor: "bg-blue-500"
+    },
+    {
+      id: 4,
+      image: testimage4,
+      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
+      category: "LOREM",
+      categoryColor: "bg-orange-500"
+    },
+  ];
   return (
     <>
       {/* Hero Section */}
-      <div className="relative min-h-screen overflow-hidden bg-cover bg-center" style={{backgroundImage: `url(${HeroBg.src})`}}>
+      <div className="relative  min-h-screen overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${HeroBg.src})` }}>
         {/* Navigation */}
-        <NavBar/>
+        <NavBar />
 
         {/* Hero Content */}
         <div className="relative flex items-center justify-center min-h-[calc(100vh-96px)] mt-[-70px]">
@@ -66,16 +101,30 @@ export default function Home() {
 
           {/* Concepts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {[1, 2, 3, 4].map((index) => (
-              <div key={index} className="relative group rounded-lg overflow-hidden aspect-[3/4]">
-                <Image
-                  src={`/assets/concept-image-${index}.jpg`}
-                  alt={`Concept ${index}`}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+            {contentCards.map((card) => (
+              <div key={card.id} className="relative w-[312px] h-[567px] bg-black text-white overflow-hidden rounded-lg">
+                {/* Background Image */}
+                <img
+                  src={card.image.src}
+                  alt="Background"
+                  className="absolute top-0 left-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
-                  <h3 className="text-white text-2xl font-bold">Concept Title {index}</h3>
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+
+                {/* Text Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-10 z-10">
+                  <div className="flex flex-col items-end space-y-3">
+                    <span className={`${card.categoryColor} text-white px-4 pl-1  py-1 text-xs font-light `} style={{
+                      clipPath: 'polygon(0 0, 100% 0%, 75% 100%, 0% 100%)'
+                    }}>
+                      {card.category}
+                    </span>
+                    <h1 className="text-right text-2xl  font-semibold leading-tight">
+                      {card.title}
+                    </h1>
+                  </div>
                 </div>
               </div>
             ))}
@@ -99,15 +148,38 @@ export default function Home() {
           {/* Partners Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((index) => (
-              <div key={index} className="relative group rounded-lg overflow-hidden flex items-center justify-center p-4 aspect-[3/4] bg-gray-900">
-                <Image
-                  src={`/partner-logo-${index}.png`}
-                  alt={`Partner ${index}`}
-                  width={150}
-                  height={100}
-                  className="object-contain transition-transform duration-300 group-hover:scale-105"
-                />
+              // <div key={index} className="relative group rounded-lg overflow-hidden flex items-center justify-center p-4 aspect-[3/4] bg-gray-900">
+              //   <Image
+              //     src={`/partner-logo-${index}.png`}
+              //     alt={`Partner ${index}`}
+              //     width={150}
+              //     height={100}
+              //     className="object-contain transition-transform duration-300 group-hover:scale-105"
+              //   />
+              // </div>
+                <div  className="relative w-[500px] h-[700px] bg-black text-white overflow-hidden rounded-lg">
+              {/* Background Image */}
+              <img
+                src={actualités2.src}
+                alt="Background"
+                className="absolute top-0 left-0 w-full h-full object-cover"
+              />
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+
+              {/* Text Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-10 z-10">
+                <div className="flex flex-col items-end space-y-3">
+                  <h1 className={` text-white px-4 pl-1  py-1 text-2xl font-light `}>
+                Un Moment Historique à Ne Pas Manquer
+                  </h1>
+                  <p className="text-left text-[15px]  font-extralight leading-tight">
+                    Les Marocains vivent une période exceptionnelle autour du sport. Entre la CAN Féminine (juillet 2025), la CAN Masculine (décembre 2025) et la Coupe du Monde 2030, l’enthousiasme est à son comble. Le 10 capte cette énergie nationale pour connecter les marques à une audience jeune, fière et engagée.
+                  </p>
+                </div>
               </div>
+            </div>
             ))}
           </div>
         </div>
@@ -129,7 +201,7 @@ export default function Home() {
               COLLABORER
             </button>
           </div>
-    </div>
+        </div>
       </section>
       <Footer />
     </>

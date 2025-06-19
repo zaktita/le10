@@ -129,7 +129,7 @@ const page = () => {
         </div>
 
       </div>
-         {/* <div className="w-full    mt-[-1425px] ">
+      {/* <div className="w-full    mt-[-1425px] ">
           <Image
             src={bottomImage}
             alt="Line"
