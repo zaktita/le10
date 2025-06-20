@@ -48,6 +48,34 @@ export default function Home() {
       categoryColor: "bg-orange-500"
     },
   ];
+
+  const actualitesCards = [
+    {
+      id: 1,
+      image: actualités3,
+      title: "Un Moment Historique à Ne Pas Manquer",
+      description: "Les Marocains vivent une période exceptionnelle autour du sport. Entre la CAN Féminine (juillet 2025), la CAN Masculine (décembre 2025) et la Coupe du Monde 2030, l’enthousiasme est à son comble. Le 10 capte cette énergie nationale pour connecter les marques à une audience jeune, fière et engagée.",
+      category: "SPORTS",
+      categoryColor: "bg-blue-500"
+    },
+    {
+      id: 2,
+      image: actualités2,
+      title: "Plus Qu’un Média, Une Communauté",
+      description: "THE 10 rassemble une nouvelle génération de passionnés de sport à travers des contenus qui mêlent entertainment, infotainment et culture populaire. Vidéos virales, podcasts, formats courts : notre écosystème média crée du lien, de l’émotion, et une fidélité organique.",
+      category: "SPORTS",
+      categoryColor: "bg-blue-500"
+    },
+    {
+      id: 3,
+      image: actualités,
+      title: "Un Média Responsable, Inclusif et Qui Fait du Bruit",
+      description: "Nous portons une vision inclusive et moderne du sport : femmes, hommes, toutes origines et toutes disciplines confondues. Engagé sur les valeurs et audacieux dans le ton, THE 10 est un média pop, ancré dans le réel, et prêt à faire rayonner les marques qui partagent ces convictions.",
+      category: "SPORTS",
+      categoryColor: "bg-blue-500"
+    },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -100,9 +128,9 @@ export default function Home() {
           </div>
 
           {/* Concepts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {contentCards.map((card) => (
-              <div key={card.id} className="relative w-[312px] h-[567px] bg-black text-white overflow-hidden rounded-lg">
+              <div key={card.id} className="relative w-full aspect-[9/16] bg-black text-white overflow-hidden rounded-lg">
                 {/* Background Image */}
                 <img
                   src={card.image.src}
@@ -114,14 +142,14 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
 
                 {/* Text Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-10 z-10">
-                  <div className="flex flex-col items-end space-y-3">
-                    <span className={`${card.categoryColor} text-white px-4 pl-1  py-1 text-xs font-light `} style={{
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-10 z-10">
+                  <div className="flex flex-col items-end space-y-2 sm:space-y-3">
+                    <span className={`${card.categoryColor} text-white px-3 sm:px-4 pl-1 py-1 text-xs font-light`} style={{
                       clipPath: 'polygon(0 0, 100% 0%, 75% 100%, 0% 100%)'
                     }}>
                       {card.category}
                     </span>
-                    <h1 className="text-right text-2xl  font-semibold leading-tight">
+                    <h1 className="text-right text-lg sm:text-xl lg:text-2xl font-semibold leading-tight">
                       {card.title}
                     </h1>
                   </div>
@@ -133,53 +161,51 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section className="relative bg-black py-20 mt-24">
+      <section className="relative bg-black py-20 ">
         <div className="container mx-auto px-6">
-          {/* Section Header */}
-          <div className="flex flex-col lg:flex-row items-center justify-between mb-16">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl text-white mb-4 lg:mb-0">PARTENAIRES</h2>
-            <div className="flex justify-center lg:justify-end w-full lg:w-auto">
-              <button className="bg-yellow-500 text-black font-bold text-xl py-4 px-12 rounded hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-200 font-lato">
-                VOIR PLUS
-              </button>
-            </div>
+        
+
+          {/* Header avec titre, bouton et ligne sur la même ligne */}
+          <div className="flex items-center gap-8 mb-24">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white flex-shrink-0">
+              Actualités
+            </h1>
+            <div className="flex-1 border-t border-dotted border-gray-600"></div>
+            <button
+              variant="outline"
+              className="bg-transparent border-white text-white hover:bg-white hover:text-black transition-colors duration-300 px-6 py-2 rounded-full flex-shrink-0"
+            >
+              Tout Voir
+            </button>
           </div>
 
+
           {/* Partners Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((index) => (
-              // <div key={index} className="relative group rounded-lg overflow-hidden flex items-center justify-center p-4 aspect-[3/4] bg-gray-900">
-              //   <Image
-              //     src={`/partner-logo-${index}.png`}
-              //     alt={`Partner ${index}`}
-              //     width={150}
-              //     height={100}
-              //     className="object-contain transition-transform duration-300 group-hover:scale-105"
-              //   />
-              // </div>
-                <div  className="relative w-[500px] h-[700px] bg-black text-white overflow-hidden rounded-lg">
-              {/* Background Image */}
-              <img
-                src={actualités2.src}
-                alt="Background"
-                className="absolute top-0 left-0 w-full h-full object-cover"
-              />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+            {actualitesCards.map((card) => (
+              <div key={card.id} className="relative w-full aspect-[5/7] bg-black text-white overflow-hidden rounded-xl">
+                {/* Background Image */}
+                <img
+                  src={card.image.src}
+                  alt="Background"
+                  className="absolute top-0 left-0 w-full h-full object-cover"
+                />
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
 
-              {/* Text Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-10 z-10">
-                <div className="flex flex-col items-end space-y-3">
-                  <h1 className={` text-white px-4 pl-1  py-1 text-2xl font-light `}>
-                Un Moment Historique à Ne Pas Manquer
-                  </h1>
-                  <p className="text-left text-[15px]  font-extralight leading-tight">
-                    Les Marocains vivent une période exceptionnelle autour du sport. Entre la CAN Féminine (juillet 2025), la CAN Masculine (décembre 2025) et la Coupe du Monde 2030, l’enthousiasme est à son comble. Le 10 capte cette énergie nationale pour connecter les marques à une audience jeune, fière et engagée.
-                  </p>
+                {/* Text Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-10 z-10">
+                  <div className="flex flex-col items-end space-y-2 sm:space-y-3">
+                    <h1 className="text-white px-2 sm:px-4 py-1 text-xl sm:text-2xl lg:text-[32px] font-light mr-0 sm:mr-4 lg:mr-10">
+                      {card.title}
+                    </h1>
+                    <p className="text-left text-sm sm:text-base lg:text-[18px] font-extralight leading-tight">
+                      {card.description}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
             ))}
           </div>
         </div>
