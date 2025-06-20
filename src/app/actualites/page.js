@@ -66,11 +66,13 @@ const page = () => {
       <div className="bg-black text-white">
         <NavBar />
 
-        {/* News header section */}
-        <div className="container mx-auto px-4 pt-16 pb-10 text-center">
-          <h1 className="text-8xl font-bold mb-8 tracking-wide">ACTUALITÉS</h1>
+        {/* News header section - made responsive */}
+        <div className="container mx-auto px-4 pt-8 sm:pt-10 md:pt-12 lg:pt-16 pb-6 sm:pb-8 md:pb-10 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 tracking-wide">
+            ACTUALITÉS
+          </h1>
 
-          <p className="max-w-4xl mx-auto text-[#AEAEAE] text-lg">
+          <p className="max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl mx-auto text-[#AEAEAE] text-sm sm:text-base md:text-lg leading-relaxed">
             LE 10, c'est plus qu'un média sportif : c'est le reflet d'une génération qui vit le sport avec passion, fierté et
             créativité. En collaborant avec nous, vous connectez votre marque à une communauté engagée, portée par des
             événements historiques, des formats innovants, et des valeurs fortes : inclusion, proximité, et impact culturel.

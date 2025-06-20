@@ -83,26 +83,26 @@ export default function Home() {
         {/* Navigation */}
         <NavBar />
 
-        {/* Hero Content */}
-        <div className="relative flex items-center justify-center min-h-[calc(100vh-96px)] mt-[-70px]">
-          <div className="container mx-auto px-6">
+        {/* Hero Content - Improved Responsiveness */}
+        <div className="relative flex items-center justify-center min-h-[calc(100vh-80px)] sm:min-h-[calc(100vh-96px)] mt-[-40px] sm:mt-[-70px]">
+          <div className="container mx-auto px-4 sm:px-6">
             <div className="max-w-6xl mx-auto text-center">
-              <h1 className="text-5xl flex flex-col justify-center items-center sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-tight tracking-tight whitespace-nowrap">
-                <div className="inline-block mb-2">
+              <h1 className="text-4xl flex flex-col justify-center items-center sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight tracking-tight">
+                <div className="inline-block mb-1 sm:mb-2">
                   INFORMER AVEC <span className="text-yellow-500">PASSION</span>
                 </div>
                 <div className="inline-block">
                   TOUTE UNE <span className="text-purple-500">GÉNÉRATION</span>
                 </div>
               </h1>
-              <p className="text-white/50 text-sm sm:text-md lg:text-xl max-w-3xl mx-auto leading-relaxed mb-12 mt-12">
+              <p className="text-white/50 text-xs sm:text-sm md:text-base lg:text-xl max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8 md:mb-10 lg:mb-12 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
                 LE 10, c'est plus qu'un média sportif : c'est le reflet d'une génération qui vit le sport avec
                 passion, fierté et créativité. En collaborant avec nous, vous connectez votre marque à une
                 communauté engagée, portée par des événements historiques, des formats innovants, et
                 des valeurs fortes : inclusion, proximité, et impact culturel.
               </p>
               <div className="flex justify-center">
-                <button className="bg-yellow-500 text-black font-black text-xl py-4 px-12 rounded hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-200 ">
+                <button className="bg-yellow-500 text-black font-bold text-base sm:text-lg md:text-xl py-2 sm:py-3 md:py-4 px-6 sm:px-8 md:px-12 rounded hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-200">
                   COLLABORER
                 </button>
               </div>

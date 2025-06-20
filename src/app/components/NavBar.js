@@ -1,25 +1,39 @@
 'use client'
 
 import Link from 'next/link';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Sidebar component
 const Sidebar = ({ isOpen, setIsOpen }) => {
+  // Add effect to prevent body scrolling when sidebar is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
   return (
     <>
-      {/* Backdrop overlay */}
+      {/* Backdrop overlay - improved to block content */}
       <div
-        className={`fixed inset-0 bg-black/60 transition-opacity duration-300 z-10 ${
+        className={`fixed inset-0 bg-black/60 transition-opacity duration-300 z-30 ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setIsOpen(false)}
       />
       
-      {/* Sidebar */}
+      {/* Sidebar - improved z-index */}
       <div
         className={`fixed top-0 right-0 h-full w-80 bg-black text-white transform ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
-        } transition-transform duration-300 ease-in-out z-20 shadow-2xl`}
+        } transition-transform duration-300 ease-in-out z-40 shadow-2xl`}
       >
         {/* Header */}
         <div className="p-6 border-b border-white">
@@ -170,7 +184,7 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="relative px-6 py-4 flex justify-between items-center z-10 container mx-auto">
+      <nav className="relative px-6 py-4 flex justify-between items-center z-20 container mx-auto">
         <div className="w-20">
           <svg width="49" height="55" viewBox="0 0 49 55" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M39.7681 24.9874H41.0913C41.1575 24.9874 41.2236 24.9543 41.2236 24.8882C41.2898 24.7117 41.356 24.5243 41.4221 24.3258C41.4883 24.0832 41.5214 23.8957 41.5214 23.7634C41.5214 23.6532 41.4773 23.5649 41.389 23.4988C41.2788 23.4547 41.1134 23.4326 40.8928 23.4326C40.6502 23.4326 40.4518 23.4547 40.2974 23.4988C40.1651 23.5649 40.0548 23.6642 39.9666 23.7965C39.8784 23.9288 39.8012 24.1053 39.735 24.3258L39.6027 24.7558C39.5696 24.8882 39.6688 24.9874 39.7681 24.9874Z" fill="white" />
@@ -194,16 +208,10 @@ export default function NavBar() {
         </button>
       </nav>
 
-      {/* Sidebar */}
+      {/* Sidebar - improved z-index management */}
       <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
-      {/* Overlay with blur effect when sidebar is open */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-transparent bg-opacity-10 backdrop-blur-sm z-10"
-          onClick={() => setIsSidebarOpen(false)}
-        />
-      )}
+      {/* Removed duplicate overlay that may cause issues */}
     </>
   );
 }
