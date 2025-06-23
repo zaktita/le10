@@ -15,7 +15,7 @@ import visibilityIcon from '../../assets/streamline_screen-broadcast.svg'
 export const PourquoiLe10 = () => {
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef(null);
-  
+
   useEffect(() => {
     // Create intersection observer to detect when section enters and leaves viewport
     const observer = new IntersectionObserver((entries) => {
@@ -25,11 +25,11 @@ export const PourquoiLe10 = () => {
       threshold: 0.1,
       rootMargin: '0px 0px -100px 0px'
     });
-    
+
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-    
+
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
@@ -63,7 +63,7 @@ export const PourquoiLe10 = () => {
   ];
 
   return (
-    <div 
+    <div
       ref={sectionRef}
       className="w-full relative flex flex-col justify-center items-center py-10 sm:py-16 md:py-20 lg:py-[120px] px-4 sm:px-6 md:px-10 lg:px-[70px] gap-8 sm:gap-12 md:gap-16 lg:gap-[79px]"
       style={{
@@ -75,7 +75,7 @@ export const PourquoiLe10 = () => {
       }}>
       {/* Heading and intro section */}
       <div className={`max-w-9xl w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-           style={{ transitionDelay: '200ms' }}>
+        style={{ transitionDelay: '200ms' }}>
         <div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center md:text-left">Pourquoi le 10 ?</h2>
         </div>
@@ -95,10 +95,10 @@ export const PourquoiLe10 = () => {
           {cardsData.map((card, index) => (
             <div
               key={index}
-              className={`w-full sm:w-[300px] md:w-[350px] lg:w-[400px] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-lg p-16 sm:p-8 md:p-12 lg:p-24 flex flex-col justify-between items-center relative overflow-hidden mx-auto sm:mx-0 transition-all duration-700 hover:scale-105 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+              className={`w-full sm:w-[300px] md:w-[350px] lg:w-[400px] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-lg p-16 sm:p-8 md:p-12 lg:p-24 flex flex-col justify-between items-center relative overflow-hidden mx-auto sm:mx-0 transition-all duration-300 hover:scale-105 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
               style={{
                 backgroundImage: `url(${card.background.src})`,
-                transitionDelay: `${400 + index * 150}ms`,
+                transitionDelay: `${10 + index * 10}ms`,
               }}
             >
               <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay pointer-events-none"></div>
@@ -128,7 +128,7 @@ export const PourquoiLe10 = () => {
           ))}
         </div>
       </div>
-      
+
       <style jsx global>{`
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(20px); }
