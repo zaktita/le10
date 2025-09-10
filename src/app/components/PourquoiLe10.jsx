@@ -80,11 +80,11 @@ export const PourquoiLe10 = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center md:text-left">Pourquoi le 10 ?</h2>
         </div>
         <div className="text-white/80 mt-4 md:mt-0">
-          <p className="text-base sm:text-lg text-center md:text-left">
-            Lorem ipsum dolor sit amet consectetur. At aliquet turpis et ac praesent.
-            Senectus convallis lacus diam ut. Felis massa mauris proin at. Tempor vestibulum ac dui egestas
-            duis nisl dignissim lorem pharetra. Eleifend ut congue at blandit adipiscing massa.
-            Consectetur sed etiam arcu egestas a eu amet.
+        <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+            LE 10 se distingue comme le média sportif de référence au Maroc, 
+            combinant expertise journalistique et innovation digitale. 
+            Notre approche unique mêle contenu premium, engagement communautaire 
+            et formats innovants pour créer une expérience immersive autour du sport.
           </p>
         </div>
       </div>

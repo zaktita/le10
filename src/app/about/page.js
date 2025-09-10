@@ -20,7 +20,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className="bg-black min-h-screen text-white">
+      <div className=" min-h-screen text-white">
         <NavBar />
         <Header />
         <VideoSection />
@@ -34,7 +34,6 @@ export default function AboutPage() {
           />
         </div>
         <SharePlay />
-
         <div
           className=" lg:block w-full bg-black py-12 md:py-16 lg:py-24  overflow-hidden my-8 md:my-12 lg:my-16 relative"
           style={{
@@ -49,12 +48,9 @@ export default function AboutPage() {
           }}
         >
           <PourquoiLe10 />
-
           <Stats />
         </div>
-
         <PourquoiCollaborer />
-          
         <Comment_travailler_ensemble />
         <div className="px-24">
           <Startfreetrail />

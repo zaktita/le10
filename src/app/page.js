@@ -16,6 +16,7 @@ import testimage4 from '../assets/test4.jpg'
 import actualités from '../assets/actualités.jpg'
 import actualités2 from '../assets/actualités2.jpg'
 import actualités3 from '../assets/actualités3.jpg'
+import Link from 'next/link';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const contentCards = [
@@ -102,9 +103,11 @@ export default function Home() {
                 des valeurs fortes : inclusion, proximité, et impact culturel.
               </p>
               <div className="flex justify-center">
-                <button className="bg-yellow-500 text-black font-bold text-base sm:text-lg md:text-xl py-2 sm:py-3 md:py-4 px-6 sm:px-8 md:px-12 rounded hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-200">
+                <Link href="/about" passHref>
+                <button className="bg-yellow-500 cursor-pointer text-black font-bold text-base sm:text-lg md:text-xl py-2 sm:py-3 md:py-4 px-6 sm:px-8 md:px-12 rounded hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-200">
                   COLLABORER
                 </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -115,16 +118,22 @@ export default function Home() {
       <PodcastsSection />
 
       {/* Concepts Section */}
-      <section className="relative bg-black py-20 mt-24">
+      <section className="relative bg-black py-20">
         <div className="container mx-auto px-6">
           {/* Section Header */}
-          <div className="flex flex-col lg:flex-row items-center justify-between mb-16">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl text-white mb-4 lg:mb-0">CONCEPTS</h2>
-            <div className="flex justify-center lg:justify-end w-full lg:w-auto">
-              <button className="bg-yellow-500 text-black font-bold text-xl py-4 px-12 rounded hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-200 font-lato">
-                VOIR PLUS
-              </button>
-            </div>
+           <div className="flex items-center gap-8 mb-24">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white flex-shrink-0">
+              Concepts
+            </h1>
+            <div className="flex-1 border-t border-dotted border-gray-600"></div>
+            <Link href="/nosconcepts" passHref>
+            <button
+              variant="outline"
+              className="bg-transparent cursor-pointer border-white text-white hover:bg-white hover:text-black transition-colors duration-300 px-6 py-2 rounded-full flex-shrink-0"
+            >
+              Tout Voir
+            </button>
+            </Link>
           </div>
 
           {/* Concepts Grid */}
@@ -171,15 +180,15 @@ export default function Home() {
               Actualités
             </h1>
             <div className="flex-1 border-t border-dotted border-gray-600"></div>
+            <Link href="/actualites" passHref>
             <button
               variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white hover:text-black transition-colors duration-300 px-6 py-2 rounded-full flex-shrink-0"
+              className="bg-transparent cursor-pointer border-white text-white hover:bg-white hover:text-black transition-colors duration-300 px-6 py-2 rounded-full flex-shrink-0"
             >
               Tout Voir
             </button>
+            </Link>
           </div>
-
-
           {/* Partners Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
             {actualitesCards.map((card) => (
@@ -197,7 +206,7 @@ export default function Home() {
                 {/* Text Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-10 z-10">
                   <div className="flex flex-col items-end space-y-2 sm:space-y-3">
-                    <h1 className="text-white px-2 sm:px-4 py-1 text-xl sm:text-2xl lg:text-[32px] font-light mr-0 sm:mr-4 lg:mr-10">
+                    <h1 className="text-white  py-1 text-xl sm:text-2xl lg:text-[32px] font-light mr-0 sm:mr-4 lg:mr-10">
                       {card.title}
                     </h1>
                     <p className="text-left text-sm sm:text-base lg:text-[18px] font-extralight leading-tight">
@@ -217,10 +226,10 @@ export default function Home() {
           <div className="bg-gradient-to-r from-black to-yellow-800 rounded-lg p-10 flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left max-w-2xl mb-10 md:mb-0">
               <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-white mb-4 leading-tight">
-                Start your free trial today!
+                Rejoignez l’aventure LE 10 !
               </h2>
               <p className="text-base md:text-lg font-lato">
-                This is a clear and concise call to action that encourages users to sign up for a free trial of StreamVibe.
+                Vous êtes une marque, une organisation ou un créateur ? Collaborez avec LE 10 pour toucher une génération passionnée, créative et engagée autour du sport et de la culture pop. Ensemble, créons des contenus impactants et des expériences uniques qui font vibrer la communauté.
               </p>
             </div>
             <button className="bg-yellow-500 text-black font-black text-xl py-4 px-12 rounded hover:bg-yellow-400 transition-colors transform hover:scale-105 duration-200 font-lato">

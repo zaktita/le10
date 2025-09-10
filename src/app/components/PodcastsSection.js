@@ -5,8 +5,12 @@ import { useState } from 'react';
 import useSWR from 'swr';
 import ReactPlayer from 'react-player';
 import GridVideoCard from './GridVideoCard';
+import Link from 'next/link';
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url) => {
+  console.log('fetch')
+  return fetch(url).then((res) => res.json());
+};
 
 function getBestThumbnail(thumbs) {
   return (
@@ -20,6 +24,7 @@ function getBestThumbnail(thumbs) {
 
 export default function PodcastsSection() {
   const [isPlayingFeatured, setIsPlayingFeatured] = useState(false);
+  // modify this code with a normal fetch
   const { data: ytData, error } = useSWR('/api/youtube', fetcher);
 
   const featuredVideo = ytData?.items?.[0];
@@ -28,11 +33,22 @@ export default function PodcastsSection() {
   const featuredThumbUrl = featuredVideo ? getBestThumbnail(featuredVideo.snippet.thumbnails) : null;
 
   return (
-    <section className="relative bg-black py-20">
+    <section className="relative bg-black py-20 ">
       {/* Section Title */}
-      <div className="mx-auto px-6 mb-12 container">
-        <h2 className="text-5xl md:text-6xl lg:text-7xl text-white">Podcasts</h2>
-      </div>
+      <div className="flex items-center gap-8 mb-24 container mx-auto px-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white flex-shrink-0">
+              Podcasts
+            </h1>
+            <div className="flex-1 border-t border-dotted border-gray-600"></div>
+            <Link href="https://www.youtube.com" passHref target='_blank'>
+            <button
+              variant="outline"
+              className="bg-transparent cursor-pointer border-white text-white hover:bg-white hover:text-black transition-colors duration-300 px-6 py-2 rounded-full flex-shrink-0"
+            >
+              Tout Voir
+            </button>
+            </Link>
+          </div>
 
       {/* Conditional Loading/Error/Content Display */}
       {error ? (
@@ -42,7 +58,7 @@ export default function PodcastsSection() {
       ) : (
         <>
           {/* Featured Video */}
-          <div className="container mx-auto px-6 mb-12">
+          <div className=" mx-auto px-6 mb-12">
             <div className="relative aspect-video overflow-hidden rounded-lg bg-cover bg-center">
               {/* ReactPlayer for the featured video - always mounted, URL and playing prop controlled */}
               {featuredVideo && (

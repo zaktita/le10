@@ -14,7 +14,7 @@ function PartnersSection() {
   ];
 
   return (
-    <section className="py-16 px-4 md:px-8 lg:px-16 max-w-6xl mx-auto">
+    <section className="py-16 px-4 md:px-8 lg:px-16 max-w-6xl mx-auto container">
       <div className="flex justify-between items-center mb-10">
         <h2 className="text-white font-anton text-4xl md:text-5xl lg:text-6xl">
           NOS PARTENAIRES

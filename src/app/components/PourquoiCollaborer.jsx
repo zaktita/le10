@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import bgImage1 from '../../assets/img1.png';
-import bgImage2 from '../../assets/img2.jpg'; 
-import bgImage3 from '../../assets/img3.png'; 
+import bgImage1 from '../../assets/Frame103.jpg';
+import bgImage2 from '../../assets/Frame104.jpg'; 
+import bgImage3 from '../../assets/Frame145.jpg'; 
 
 const PourquoiCollaborer = () => {
     const collaborationCards = [
@@ -126,7 +126,7 @@ const PourquoiCollaborer = () => {
                 >
                     <div>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
-                            Pourquoi le collaborer ?
+                            Pourquoi <br></br> collaborer ?
                         </h2>
                     </div>
                     <div className="text-white/80 mt-4 lg:mt-0">

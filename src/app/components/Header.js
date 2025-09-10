@@ -4,7 +4,7 @@ import React from 'react';
 
 function Header() {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[50vh] md:min-h-[60vh] text-center px-4 md:px-8 lg:px-16 py-8 md:py-0">
+    <section className="relative  flex flex-col items-center justify-center min-h-[50vh] md:min-h-[60vh] text-center px-4 md:px-8 lg:px-16 py-8 md:py-0">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-white font-anton text-3xl xs:text-4xl sm:text-5xl md:text-4xl lg:text-6xl xl:text-8xl leading-tight">
           INFORMER AVEC <span className="text-orange-500">PASSION</span>
