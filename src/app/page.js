@@ -80,7 +80,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative  min-h-screen overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${HeroBg.src})` }}>
+<div className="relative min-h-screen overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${HeroBg.src})` }}>
         {/* Navigation */}
         <NavBar />
 
@@ -118,23 +118,30 @@ export default function Home() {
       <PodcastsSection />
 
       {/* Concepts Section */}
-      <section className="relative bg-black py-20">
+<section className="relative bg-black py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="container mx-auto px-6">
           {/* Section Header */}
-           <div className="flex items-center gap-8 mb-24">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white flex-shrink-0">
-              Concepts
-            </h1>
-            <div className="flex-1 border-t border-dotted border-gray-600"></div>
-            <Link href="/nosconcepts" passHref>
-            <button
-              variant="outline"
-              className="bg-transparent cursor-pointer border-white text-white hover:bg-white hover:text-black transition-colors duration-300 px-6 py-2 rounded-full flex-shrink-0"
-            >
-              Tout Voir
-            </button>
-            </Link>
-          </div>
+           <div className="flex items-center justify-between gap-4 mb-12 sm:mb-16 md:mb-20">
+  {/* Left side with title and line */}
+  <div className="flex items-center gap-4 flex-1">
+    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white flex-shrink-0">
+      Concepts
+    </h1>
+    <div className="hidden sm:block flex-1 border-t border-dotted border-gray-600"></div>
+  </div>
+  
+  {/* Button */}
+  <Link href="/nosconcepts" passHref>
+    <button
+      variant="outline"
+      className="bg-transparent cursor-pointer border border-white text-white hover:bg-white hover:text-black 
+        transition-colors duration-300 px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full flex-shrink-0 
+        text-xs sm:text-sm md:text-base whitespace-nowrap"
+    >
+      Tout Voir
+    </button>
+  </Link>
+</div>
 
           {/* Concepts Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
@@ -170,25 +177,32 @@ export default function Home() {
       </section>
 
       {/* Partners Section */}
-      <section className="relative bg-black py-20 ">
+<section className="relative bg-black py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="container mx-auto px-6">
         
 
           {/* Header avec titre, bouton et ligne sur la même ligne */}
-          <div className="flex items-center gap-8 mb-24">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white flex-shrink-0">
-              Actualités
-            </h1>
-            <div className="flex-1 border-t border-dotted border-gray-600"></div>
-            <Link href="/actualites" passHref>
-            <button
-              variant="outline"
-              className="bg-transparent cursor-pointer border-white text-white hover:bg-white hover:text-black transition-colors duration-300 px-6 py-2 rounded-full flex-shrink-0"
-            >
-              Tout Voir
-            </button>
-            </Link>
-          </div>
+         <div className="flex items-center justify-between gap-4 mb-12 sm:mb-16 md:mb-20">
+  {/* Left side with title and line */}
+  <div className="flex items-center gap-4 flex-1">
+    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white flex-shrink-0">
+      Actualités
+    </h3>
+    <div className="hidden sm:block flex-1 border-t border-dotted border-gray-600"></div>
+  </div>
+  
+  {/* Button */}
+  <Link href="/actualites" passHref>
+    <button
+      variant="outline"
+      className="bg-transparent cursor-pointer border border-white text-white hover:bg-white hover:text-black 
+        transition-colors duration-300 px-3 sm:px-4 md:px-6 py-2 sm:py-2 rounded-full flex-shrink-0 
+        text-xs sm:text-sm md:text-base whitespace-nowrap"
+    >
+      Tout Voir
+    </button>
+  </Link>
+</div>
           {/* Partners Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
             {actualitesCards.map((card) => (
@@ -221,7 +235,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative bg-black py-20 mt-24">
+<section className="relative bg-black py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="container mx-auto px-6">
           <div className="bg-gradient-to-r from-black to-yellow-800 rounded-lg p-10 flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left max-w-2xl mb-10 md:mb-0">

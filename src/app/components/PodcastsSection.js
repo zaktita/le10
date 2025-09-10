@@ -35,7 +35,7 @@ export default function PodcastsSection() {
   return (
     <section className="relative bg-black py-20 ">
       {/* Section Title */}
-      <div className="flex items-center gap-8 mb-24 container mx-auto px-6">
+      <div className="flex items-center gap-8 mb-24 container mx-auto px-6 pt-12 sm:pt-16 md:pt-20 lg:pt-24">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white flex-shrink-0">
               Podcasts
             </h1>
