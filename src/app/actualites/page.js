@@ -73,7 +73,7 @@ const page = () => {
           </h1>
 
           <p className="max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl mx-auto text-[#AEAEAE] text-sm sm:text-base md:text-lg leading-relaxed">
-            LE 10, c'est plus qu'un média sportif : c'est le reflet d'une génération qui vit le sport avec passion, fierté et
+            LE 10, c&lsquo;est plus qu&apos;un média sportif : c&apos;est le reflet d&apos;une génération qui vit le sport avec passion, fierté et
             créativité. En collaborant avec nous, vous connectez votre marque à une communauté engagée, portée par des
             événements historiques, des formats innovants, et des valeurs fortes : inclusion, proximité, et impact culturel.
           </p>

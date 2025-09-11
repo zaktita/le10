@@ -6,7 +6,7 @@ import useSWR from 'swr';
 import ReactPlayer from 'react-player';
 import GridVideoCard from './GridVideoCard';
 import Link from 'next/link';
-
+import podcastbG from '../../assets/podcastBg.jpg'
 const fetcher = (url) => {
   console.log('fetch')
   return fetch(url).then((res) => res.json());

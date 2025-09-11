@@ -20,7 +20,7 @@ const Footer = () => {
 <path d="M3.87536 44.3718H10.4253C11.3847 44.3718 12.2117 43.7433 12.4764 42.817L20.5481 14.2683C20.945 12.912 19.9195 11.5557 18.5301 11.5557H16.1814C15.6852 11.5557 15.2551 11.7211 14.8913 11.9857L1.65894 21.8769C1.32814 22.1415 1.06349 22.5054 0.931166 22.9024L0.434954 24.391C0.00490428 25.7473 1.03041 27.1698 2.45288 27.1698H3.14758C4.53697 27.1698 5.56247 28.5261 5.1655 29.8824L1.82435 41.6592C1.46046 43.0155 2.45288 44.3718 3.87536 44.3718Z" fill="white"/>
 </svg>
             <p className="text-gray-400 text-sm mt-4 max-w-xs leading-relaxed">
-              LE 10 est un média sportif, reflet d'une génération passionnée, fière et créative.
+              LE 10 est un média sportif, reflet d&apos;une génération passionnée, fière et créative.
             </p>
           </div>
 

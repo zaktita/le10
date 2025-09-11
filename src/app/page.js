@@ -97,7 +97,7 @@ export default function Home() {
                 </div>
               </h1>
               <p className="text-white/50 text-xs sm:text-sm md:text-base lg:text-xl max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8 md:mb-10 lg:mb-12 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
-                LE 10, c'est plus qu'un média sportif : c'est le reflet d'une génération qui vit le sport avec
+                LE 10, c&apos;est plus qu&apos;un média sportif : c&apos;est le reflet d&apos;une génération qui vit le sport avec
                 passion, fierté et créativité. En collaborant avec nous, vous connectez votre marque à une
                 communauté engagée, portée par des événements historiques, des formats innovants, et
                 des valeurs fortes : inclusion, proximité, et impact culturel.

@@ -13,8 +13,6 @@ import bottomImage2 from '../../assets/bottom-image2.png'; // Import the bottom 
 import PourquoiCollaborer from '../components/PourquoiCollaborer';
 import Comment_travailler_ensemble from '../components/Comment _travailler_ensemble';
 import Startfreetrail from '../components/Startfreetrail';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 export default function AboutPage() {
 
 

@@ -13,7 +13,7 @@ function Header() {
           TOUTE UNE <span className="text-orange-500">GÉNÉRATION</span>
         </h1>
         <p className="font-lato text-white text-xs sm:text-sm md:text-base max-w-3xl mx-auto mt-4 md:mt-8 leading-relaxed px-2">
-          LE 10, c'est plus qu'un média sportif : c'est le reflet d'une génération qui vit le sport avec passion, fierté et
+          LE 10, c&apos;est plus qu&apos;un média sportif : c&apos;est le reflet d&apos;une génération qui vit le sport avec passion, fierté et
           créativité. En collaborant avec nous, vous connectez votre marque à une communauté engagée, portée par des
           événements historiques, des formats innovants, et des valeurs fortes : inclusion, proximité, et impact culturel.
         </p>
