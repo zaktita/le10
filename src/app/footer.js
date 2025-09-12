@@ -4,7 +4,7 @@ import Logo from '@/assets/logo.png' // Assuming you have the logo in assets
 
 const Footer = () => {
   return (
-    <footer className="bg-black py-16 mt-24">
+    <footer className="bg-black py-16 ">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12">
           {/* Logo */}

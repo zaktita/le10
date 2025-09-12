@@ -24,28 +24,28 @@ export default function Home() {
       id: 1,
       image: testimage,
       title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "LOREM",
+      category: "Nassim talks",
       categoryColor: "bg-[#FFB43D]"
     },
     {
       id: 2,
       image: testimage2,
       title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "SPORTS",
+      category: "Ach ban lik ?",
       categoryColor: "bg-green-500"
     },
     {
       id: 3,
       image: testimage3,
       title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "NEWS",
+      category: "Chno lblan ?",
       categoryColor: "bg-blue-500"
     },
     {
       id: 4,
       image: testimage4,
       title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "LOREM",
+      category: "Fast Foot",
       categoryColor: "bg-orange-500"
     },
   ];
@@ -161,7 +161,7 @@ export default function Home() {
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-10 z-10">
                   <div className="flex flex-col items-end space-y-2 sm:space-y-3">
                     <span className={`${card.categoryColor} text-white px-3 sm:px-4 pl-1 py-1 text-xs font-light`} style={{
-                      clipPath: 'polygon(0 0, 100% 0%, 75% 100%, 0% 100%)'
+                      clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 15% 0%)'
                     }}>
                       {card.category}
                     </span>

@@ -74,10 +74,10 @@ export const PourquoiLe10 = () => {
         minHeight: 'auto',
       }}>
       {/* Heading and intro section */}
-      <div className={`max-w-9xl w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      <div className={`max-w-9xl w-full grid grid-cols-1 lg:grid-cols-2 gap-4  md:gap-8 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         style={{ transitionDelay: '200ms' }}>
         <div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-center md:text-left">Pourquoi le 10 ?</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white text-left">Pourquoi le 10 ?</h2>
         </div>
         <div className="text-white/80 mt-4 md:mt-0">
         <p className="text-base sm:text-lg md:text-xl leading-relaxed">
@@ -90,44 +90,61 @@ export const PourquoiLe10 = () => {
       </div>
 
       {/* Feature cards section */}
-      <div className="flex justify-center w-full">
-        <div className="max-w-9xl w-full flex flex-col sm:flex-row flex-wrap justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-48">
-          {cardsData.map((card, index) => (
-            <div
-              key={index}
-              className={`w-full sm:w-[300px] md:w-[350px] lg:w-[400px] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-lg p-16 sm:p-8 md:p-12 lg:p-24 flex flex-col justify-between items-center relative overflow-hidden mx-auto sm:mx-0 transition-all duration-300 hover:scale-105 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-              style={{
-                backgroundImage: `url(${card.background.src})`,
-                transitionDelay: `${10 + index * 10}ms`,
-              }}
-            >
-              <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay pointer-events-none"></div>
+     <div className="flex justify-center w-full px-4 sm:px-6 lg:px-8">
+  <div className="max-w-7xl w-full flex flex-col lg:flex-row flex-wrap justify-center sm:justify-between items-center gap-8">
+    {cardsData.map((card, index) => (
+      <div
+        key={index}
+        className={`
+          w-full sm:flex-1 max-w-sm
+          aspect-[4/5] sm:aspect-[3/4] 
+          rounded-2xl 
+          p-6 sm:p-8 md:p-10 
+          flex flex-col items-center 
+          relative overflow-hidden 
+          transition-all duration-500 
+          hover:scale-105 
+          ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+        `}
+        style={{
+          backgroundImage: `url(${card.background.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          transitionDelay: `${index * 80}ms`,
+        }}
+      >
+        {/* Subtle overlay */}
+        <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/30 to-transparent"></div>
 
-              {/* Content wrapper with equal spacing */}
-              <div className="flex flex-col justify-between items-center h-full py-1">
-                {/* Icon */}
-                <div className="relative z-10 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 transition-transform duration-300 hover:scale-110">
-                  <Image
-                    src={card.icon}
-                    alt={card.alt}
-                    width={80}
-                    height={80}
-                    className="object-contain"
-                  />
-                </div>
+        {/* Content */}
+        <div className="flex flex-col justify-center items-center h-full z-10 space-y-4">
+          {/* Icon */}
+          <div className="w-20 h-20 md:w-20 md:h-20 transition-transform duration-300 hover:scale-110">
+            <Image
+              src={card.icon}
+              alt={card.alt}
+              width={80}
+              height={80}
+              className="object-contain"
+            />
+          </div>
 
-                {/* Title */}
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-black relative z-10 transition-transform duration-300 hover:scale-105">{card.title}</h3>
+          {/* Title */}
+          <h3 className="text-2xl sm:text-2xl md:text-2xl font-semibold text-center text-gray-900 mb-2 transition-transform duration-300 hover:scale-105">
+            {card.title}
+          </h3>
 
-                {/* Description */}
-                <p className="text-center relative z-10 text-gray-800 max-w-xs text-sm sm:text-base transition-opacity duration-300 hover:opacity-90">
-                  {card.description}
-                </p>
-              </div>
-            </div>
-          ))}
+          {/* Description */}
+          <p className="text-center text-gray-700 max-w-xs text-base sm:text-base lg:text-lg leading-relaxed">
+            {card.description}
+          </p>
         </div>
       </div>
+    ))}
+  </div>
+</div>
+
 
       <style jsx global>{`
         @keyframes fadeIn {

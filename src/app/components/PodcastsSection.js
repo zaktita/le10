@@ -69,7 +69,7 @@ export default function PodcastsSection() {
                   height="100%"
                   className="absolute inset-0"
                   playing={isPlayingFeatured}
-                  light={featuredThumbUrl} // Use the best thumbnail here
+                  light={podcastbG.src} // Use the best thumbnail here
                   playIcon={
                     // Simple play button for ReactPlayer's light mode
                     <button 
@@ -95,7 +95,7 @@ export default function PodcastsSection() {
               {!isPlayingFeatured && featuredVideo && (
                 <div 
                   className="absolute inset-0 z-20 flex p-6 md:p-12 py-12 md:py-24"
-                  style={{backgroundImage: `url(${featuredThumbUrl})`, backgroundSize: 'cover', backgroundPosition: 'center'}} // Background image here
+                  style={{backgroundImage: `url(${podcastbG.src})`, backgroundSize: 'cover', backgroundPosition: 'center'}} // Background image here
                 >
                   {/* Dark overlay */}
                   <div className="absolute inset-0 bg-black/50"></div>
