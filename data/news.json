@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Un Moment Historique à Ne Pas Manquer",
+    "excerpt": "Les Marocains vivent une période exceptionnelle autour du sport. Entre la CAN Féminine (juillet 2025), la CAN Masculine (décembre 2025) et la Coupe du Monde 2030.",
+    "content": "L'enthousiasme est à son comble. LE 10 capte cette énergie nationale pour connecter les marques à une audience jeune, fière et engagée. Cette période représente une opportunité unique de créer du contenu authentique et de toucher le cœur des supporters marocains.",
+    "conceptId": 1,
+    "featuredImage": "/assets/actualités3.jpg",
+    "contentTitle": "L'Ère Dorée du Sport Marocain",
+    "contentDescription": "Une analyse complète de cette période historique pour le sport marocain et ses implications pour les médias sportifs et les marques qui souhaitent s'associer à cette dynamique exceptionnelle.",
+    "contentLink": "https://le10.ma/moment-historique-sport-marocain",
+    "tags": ["CAN", "Coupe du Monde 2030", "Sport Marocain", "Média"],
+    "publishedAt": "2025-01-01T00:00:00.000Z",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Plus Qu'un Média, Une Communauté",
+    "excerpt": "LE 10 rassemble une nouvelle génération de passionnés de sport à travers des contenus qui mêlent entertainment, infotainment et culture populaire.",
+    "content": "Vidéos virales, podcasts, formats courts : notre écosystème média crée du lien, de l'émotion, et une fidélité organique. Nous construisons une véritable communauté autour de valeurs partagées et d'une passion commune pour le sport.",
+    "conceptId": 2,
+    "featuredImage": "/assets/actualités2.jpg",
+    "contentTitle": "La Force de la Communauté LE 10",
+    "contentDescription": "Découvrez comment LE 10 révolutionne l'approche des médias sportifs en créant une communauté engagée qui va bien au-delà du simple divertissement pour créer de véritables liens sociaux.",
+    "contentLink": "https://le10.ma/communaute-le10-revolution-media-sportif",
+    "tags": ["Communauté", "Média Sportif", "Entertainment", "Engagement"],
+    "publishedAt": "2025-01-01T00:00:00.000Z",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Un Média Responsable, Inclusif et Qui Fait du Bruit",
+    "excerpt": "Nous portons une vision inclusive et moderne du sport : femmes, hommes, toutes origines et toutes disciplines confondues.",
+    "content": "Engagé sur les valeurs et audacieux dans le ton, LE 10 est un média pop, ancré dans le réel, et prêt à faire rayonner les marques qui partagent ces convictions. Notre approche inclusive du sport brise les barrières traditionnelles.",
+    "conceptId": 3,
+    "featuredImage": "/assets/actualités.jpg", 
+    "contentTitle": "Sport Inclusif : Notre Vision d'Avenir",
+    "contentDescription": "LE 10 prône une vision moderne et inclusive du sport où chaque voix compte. Découvrez notre approche révolutionnaire qui place l'équité et la diversité au cœur de notre stratégie éditoriale.",
+    "contentLink": "https://le10.ma/media-inclusif-sport-moderne-diversite",
+    "tags": ["Inclusivité", "Sport Féminin", "Diversité", "Engagement Social"],
+    "publishedAt": "2025-01-01T00:00:00.000Z",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  }
+]

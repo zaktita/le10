@@ -51,9 +51,6 @@ export default function AboutPage() {
         </div>
         <PourquoiCollaborer />
         <Comment_travailler_ensemble />
-        <div className="px-24">
-          <Startfreetrail />
-        </div>
         <Footer />
 
       </div>

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Ach ban lik ?",
+    "description": "Format de discussion et d'analyse sportive",
+    "categoryColor": "bg-[#FFB43D]",
+    "featuredImage": "/assets/concept-image-1.png",
+    "contentTitle": "Discussion Sportive Interactive",
+    "contentDescription": "Un format innovant qui permet aux fans de sport de débattre et d'analyser les performances de leurs équipes favorites dans une ambiance conviviale et passionnée.",
+    "contentLink": "https://example.com/ach-ban-lik",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Chno lblan ?",
+    "description": "Débats et actualités sportives",
+    "categoryColor": "bg-blue-500",
+    "featuredImage": "/assets/concept-image-2.png",
+    "contentTitle": "Actualités & Débats Sportifs",
+    "contentDescription": "Suivez les dernières actualités sportives et participez aux débats les plus passionnants du monde du sport avec notre communauté engagée.",
+    "contentLink": "https://example.com/chno-lblan",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Fast Foot",
+    "description": "Actualités football rapides",
+    "categoryColor": "bg-orange-500",
+    "featuredImage": "/assets/concept-image-3.png",
+    "contentTitle": "Info Football en Temps Réel",
+    "contentDescription": "Les actualités football les plus fraîches directement dans votre timeline. Ne ratez plus aucun moment fort du football mondial.",
+    "contentLink": "https://example.com/fast-foot",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "Nassim talks",
+    "description": "Interviews et discussions avec Nassim",
+    "categoryColor": "bg-green-500",
+    "featuredImage": "/assets/concept-image-4.png",
+    "contentTitle": "Interviews Exclusives avec Nassim",
+    "contentDescription": "Des conversations authentiques et des interviews exclusives avec les personnalités du sport. Découvrez les coulisses et les histoires inédites.",
+    "contentLink": "https://example.com/nassim-talks",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "title": "History break",
+    "description": "Moments historiques du sport",
+    "categoryColor": "bg-purple-500",
+    "featuredImage": "/assets/Content.png",
+    "contentTitle": "Moments Historiques du Sport",
+    "contentDescription": "Revivez les moments les plus marquants de l'histoire du sport. Des analyses et des récits qui ont façonné le paysage sportif mondial.",
+    "contentLink": "https://example.com/history-break",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  }
+]
