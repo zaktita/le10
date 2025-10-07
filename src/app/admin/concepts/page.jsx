@@ -92,7 +92,7 @@ export default function ConceptsAdmin() {
         ) : (
           <div className="bg-gray-900 border border-gray-800 rounded-lg shadow-lg overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
-              <h2 className="text-lg font-semibold text-gray-800">
+              <h2 className="text-lg font-semibold ">
                 Concepts ({concepts.length})
               </h2>
             </div>
@@ -114,7 +114,7 @@ export default function ConceptsAdmin() {
                           className={`${concept.categoryColor} w-4 h-4 rounded-full`}
                           title="Couleur de catégorie"
                         ></span>
-                        <h3 className="text-lg font-medium text-gray-900">
+                        <h3 className="text-lg font-medium ">
                           {concept.title}
                         </h3>
                       </div>

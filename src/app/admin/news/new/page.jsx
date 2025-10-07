@@ -107,7 +107,7 @@ export default function NewNews() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-white mb-2">
                   Titre du post *
                 </label>
                 <input
@@ -122,7 +122,7 @@ export default function NewNews() {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-white mb-2">
                   Concept (Catégorie) *
                 </label>
                 <select
@@ -156,7 +156,7 @@ export default function NewNews() {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-white mb-2">
                   Lien du contenu *
                 </label>
                 <input

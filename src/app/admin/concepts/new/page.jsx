@@ -92,7 +92,7 @@ export default function NewConcept() {
         <div className="bg-gray-900 border border-gray-800 rounded-lg shadow-lg p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Titre du concept *
               </label>
               <input
@@ -107,7 +107,7 @@ export default function NewConcept() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Description *
               </label>
               <textarea
@@ -131,7 +131,7 @@ export default function NewConcept() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Titre du contenu
               </label>
               <input
@@ -145,7 +145,7 @@ export default function NewConcept() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Description du contenu
               </label>
               <textarea
@@ -159,7 +159,7 @@ export default function NewConcept() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Lien du contenu
               </label>
               <input
@@ -173,7 +173,7 @@ export default function NewConcept() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Couleur de catégorie
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -198,7 +198,7 @@ export default function NewConcept() {
                       className="w-4 h-4 rounded-full"
                       style={{ backgroundColor: option.color }}
                     ></div>
-                    <span className="text-sm text-gray-300">{option.label}</span>
+                    <span className="text-sm text-white">{option.label}</span>
                   </label>
                 ))}
               </div>

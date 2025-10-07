@@ -131,7 +131,7 @@ export default function EditConcept({ params }) {
         <div className="bg-gray-900 border border-gray-800 rounded-lg shadow-lg p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Titre du concept *
               </label>
               <input
@@ -146,7 +146,7 @@ export default function EditConcept({ params }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Description *
               </label>
               <textarea
@@ -169,50 +169,9 @@ export default function EditConcept({ params }) {
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Titre du contenu
-              </label>
-              <input
-                type="text"
-                name="contentTitle"
-                value={formData.contentTitle}
-                onChange={handleChange}
-                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
-                placeholder="Titre affiché dans le contenu détaillé"
-              />
-            </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Description du contenu
-              </label>
-              <textarea
-                name="contentDescription"
-                value={formData.contentDescription}
-                onChange={handleChange}
-                rows={4}
-                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
-                placeholder="Description détaillée du concept pour les pages de contenu..."
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Lien du contenu
-              </label>
-              <input
-                type="url"
-                name="contentLink"
-                value={formData.contentLink}
-                onChange={handleChange}
-                className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
-                placeholder="https://example.com/lien-vers-le-concept"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Couleur de catégorie
               </label>
               <div className="grid grid-cols-3 gap-2">

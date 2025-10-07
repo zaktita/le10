@@ -31,7 +31,8 @@ function writeConcepts(concepts) {
 export async function GET(request, { params }) {
   try {
     const concepts = readConcepts()
-    const concept = concepts.find(c => c.id === params.id)
+    const conceptId = parseInt(params.id)
+    const concept = concepts.find(c => c.id === conceptId)
     
     if (!concept) {
       return NextResponse.json(
@@ -75,7 +76,8 @@ export async function PUT(request, { params }) {
     }
 
     const concepts = readConcepts()
-    const conceptIndex = concepts.findIndex(c => c.id === params.id)
+    const conceptId = parseInt(params.id)
+    const conceptIndex = concepts.findIndex(c => c.id === conceptId)
     
     if (conceptIndex === -1) {
       return NextResponse.json(
@@ -123,7 +125,8 @@ export async function PUT(request, { params }) {
 export async function DELETE(request, { params }) {
   try {
     const concepts = readConcepts()
-    const conceptIndex = concepts.findIndex(c => c.id === params.id)
+    const conceptId = parseInt(params.id)
+    const conceptIndex = concepts.findIndex(c => c.id === conceptId)
     
     if (conceptIndex === -1) {
       return NextResponse.json(
