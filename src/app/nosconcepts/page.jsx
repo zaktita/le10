@@ -2,106 +2,63 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import NavBar from '../components/NavBar'
-import testimage from '../../assets/test.jpg'
-import testimage2 from '../../assets/test2.jpg'
-import testimage3 from '../../assets/test3.jpg'
-import testimage4 from '../../assets/test4.jpg'
-import testimage5 from '../../assets/csp1.jpg'
-import testimage6 from '../../assets/csp2.jpg'
-import testimage7 from '../../assets/csp3.jpg'
-import testimage8 from '../../assets/csp4.jpg'
 
 const page = () => {
   const [activeButton, setActiveButton] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [selectedConcept, setSelectedConcept] = useState(null); // New state for filter
+  const [selectedConcept, setSelectedConcept] = useState(null);
+  const [concepts, setConcepts] = useState([]);
+  const [contentCards, setContentCards] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // Set page as loaded after component mount for entrance animations
   useEffect(() => {
     setIsLoaded(true);
+    fetchData();
   }, []);
 
-  const concepts = [
-    {
-      id: 1,
-      title: "Ach ban lik ?",
-    },
-    {
-      id: 2,
-      title: "Chno lblan ?",
-    },
-    {
-      id: 3,
-      title: "Fast Foot",
-    },
-    {
-      id: 4,
-      title: "Nassim talks",
-    },
-    {
-      id: 5,
-      title: "History break",
+  const fetchData = async () => {
+    try {
+      const [conceptsRes, newsRes] = await Promise.all([
+        fetch('/api/concepts'),
+        fetch('/api/news')
+      ]);
+      
+      const conceptsData = await conceptsRes.json();
+      const newsData = await newsRes.json();
+      
+      if (conceptsData.success) {
+        setConcepts(conceptsData.data || []);
+      }
+      
+      if (newsData.success) {
+        // Transform news data to match the expected format
+        const transformedContent = (newsData.data || []).map(item => {
+          // Find the concept for this content
+          const concept = (conceptsData.data || []).find(c => c.id === item.conceptId);
+          return {
+            id: item.id,
+            image: { src: item.featuredImage || '/assets/test.jpg' },
+            title: item.title,
+            category: concept ? concept.title : 'Non catégorisé',
+            categoryColor: concept ? concept.categoryColor : 'bg-gray-500',
+            contentLink: item.contentLink
+          };
+        });
+        setContentCards(transformedContent);
+      }
+    } catch (error) {
+      console.error('Failed to fetch data:', error);
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
 
-  const contentCards = [
-    {
-      id: 1,
-      image: testimage,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Ach ban lik ?",
-      categoryColor: "bg-[#FFB43D]"
-    },
-    {
-      id: 2,
-      image: testimage2,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Ach ban lik ?",
-      categoryColor: "bg-green-500"
-    },
-    {
-      id: 3,
-      image: testimage3,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Chno lblan ?",
-      categoryColor: "bg-blue-500"
-    },
-    {
-      id: 4,
-      image: testimage4,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Fast Foot",
-      categoryColor: "bg-orange-500"
-    },
-    {
-      id: 5,
-      image: testimage5,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Ach ban lik ?",
-      categoryColor: "bg-[#FFB43D]"
-    },
-    {
-      id: 6,
-      image: testimage6,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Ach ban lik ?",
-      categoryColor: "bg-green-500"
-    },
-    {
-      id: 7,
-      image: testimage7,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Chno lblan ?",
-      categoryColor: "bg-blue-500"
-    },
-    {
-      id: 8,
-      image: testimage8,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Fast Foot",
-      categoryColor: "bg-orange-500"
+  const handlePostClick = (contentLink) => {
+    if (contentLink) {
+      window.open(contentLink, '_blank', 'noopener,noreferrer');
     }
-  ];
+  };
 
   // Filter cards by selected concept/category
   const filteredCards = selectedConcept
@@ -118,6 +75,20 @@ const page = () => {
     setActiveButton(null);
     setSelectedConcept(null);
   };
+
+  if (loading) {
+    return (
+      <div className="bg-black text-white min-h-screen">
+        <NavBar />
+        <div className="flex items-center justify-center min-h-[50vh]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500 mx-auto mb-4"></div>
+            <p className="text-gray-400">Chargement des concepts...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-black text-white min-h-screen">
@@ -142,7 +113,7 @@ const page = () => {
               text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2
               ${activeButton === null
                 ? 'text-yellow-300 scale-105'
-                  : 'text-white'
+                : 'text-white'
               }`}
             style={{
               transitionDelay: `100ms`,
@@ -177,13 +148,14 @@ const page = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {filteredCards.length === 0 ? (
             <div className="col-span-full text-center text-gray-400 py-12">
-              Aucun contenu pour ce concept.
+              {loading ? 'Chargement...' : selectedConcept ? `Aucun contenu pour "${selectedConcept}".` : 'Aucun contenu disponible.'}
             </div>
           ) : (
             filteredCards.map((card, index) => (
               <div 
                 key={card.id} 
-                className="relative w-full aspect-[4/7] bg-black text-white overflow-hidden rounded-lg transform transition-all duration-500 hover:scale-[1.02]"
+                className="relative w-full aspect-[4/7] bg-black text-white overflow-hidden rounded-lg transform transition-all duration-500 hover:scale-[1.02] cursor-pointer"
+                onClick={() => handlePostClick(card.contentLink)}
                 style={{
                   animation: isLoaded ? `fadeInUp 0.8s ease-out ${600 + index * 120}ms both` : 'none'
                 }}

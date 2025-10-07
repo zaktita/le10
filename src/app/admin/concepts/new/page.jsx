@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import ImageUpload from '../../../../components/ImageUpload'
+import ImageUpload from '../../../components/ImageUpload'
 
 export default function NewConcept() {
   const [formData, setFormData] = useState({

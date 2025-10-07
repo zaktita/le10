@@ -129,7 +129,7 @@ export default function ConceptsAdmin() {
                     
                     <div className="flex space-x-2">
                       <Link
-                        href={`/admin/concepts/edit/${concept.id}`}
+                        href={`/admin/concepts/${concept.id}`}
                         className="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 transition-colors"
                       >
                         Modifier

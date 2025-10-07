@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Footer from '../footer'
+import NavBar from '../components/NavBar'
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -32,7 +33,9 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white py-16 px-6 sm:px-8 md:px-12">
+    
+    <main className="min-h-screen bg-black text-white  px-6 sm:px-8 md:px-12">
+      <NavBar />
       <div className="max-w-7xl mx-auto">
 
                 <div className="container mx-auto px-4 pt-8 sm:pt-10 md:pt-12 lg:pt-16 pb-6 sm:pb-8 md:pb-10 text-center">

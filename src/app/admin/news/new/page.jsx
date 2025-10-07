@@ -2,20 +2,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import ImageUpload from '../../../../components/ImageUpload'
+import ImageUpload from '../../../components/ImageUpload'
 
 export default function NewNews() {
   const [formData, setFormData] = useState({
     title: '',
-    excerpt: '',
-    content: '',
     conceptId: '',
-    tags: '',
     featuredImage: '',
-    contentTitle: '',
-    contentDescription: '',
-    contentLink: '',
-    publishedAt: new Date().toISOString().split('T')[0]
+    contentLink: ''
   })
   const [concepts, setConcepts] = useState([])
   const [saving, setSaving] = useState(false)
@@ -53,15 +47,14 @@ export default function NewNews() {
     setSaving(true)
 
     try {
-      // Process tags
-      const tags = formData.tags
-        .split(',')
-        .map(tag => tag.trim())
-        .filter(tag => tag.length > 0)
-
       const articleData = {
         ...formData,
-        tags,
+        excerpt: formData.title, // Use title as excerpt
+        content: formData.title, // Use title as content
+        tags: [], // Empty tags array
+        contentTitle: formData.title, // Use title as contentTitle
+        contentDescription: formData.title, // Use title as contentDescription
+        publishedAt: new Date().toISOString().split('T')[0], // Today's date
         conceptId: formData.conceptId ? parseInt(formData.conceptId) : null
       }
 
@@ -153,90 +146,18 @@ export default function NewNews() {
                 </p>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Date de publication *
-                </label>
-                <input
-                  type="date"
-                  name="publishedAt"
-                  value={formData.publishedAt}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
-                  required
-                />
-              </div>
-
-              <div>
+              <div className="md:col-span-2">
                 <ImageUpload
                   value={formData.featuredImage}
                   onChange={(url) => setFormData(prev => ({ ...prev, featuredImage: url }))}
                   type="content"
-                  label="Image mise en avant"
+                  label="Image mise en avant *"
                 />
               </div>
 
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Résumé/Extrait *
-                </label>
-                <textarea
-                  name="excerpt"
-                  value={formData.excerpt}
-                  onChange={handleChange}
-                  rows={3}
-                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
-                  placeholder="Résumé du contenu qui apparaîtra dans la liste..."
-                  required
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Contenu complet *
-                </label>
-                <textarea
-                  name="content"
-                  value={formData.content}
-                  onChange={handleChange}
-                  rows={10}
-                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
-                  placeholder="Contenu complet..."
-                  required
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Titre du contenu détaillé
-                </label>
-                <input
-                  type="text"
-                  name="contentTitle"
-                  value={formData.contentTitle}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
-                  placeholder="Titre affiché dans la page de contenu détaillé"
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Description du contenu détaillé
-                </label>
-                <textarea
-                  name="contentDescription"
-                  value={formData.contentDescription}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
-                  placeholder="Description détaillée pour la page de contenu..."
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Lien du contenu
+                  Lien du contenu *
                 </label>
                 <input
                   type="url"
@@ -245,23 +166,10 @@ export default function NewNews() {
                   onChange={handleChange}
                   className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
                   placeholder="https://le10.ma/lien-vers-contenu-complet"
+                  required
                 />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
-                  Tags (séparés par des virgules)
-                </label>
-                <input
-                  type="text"
-                  name="tags"
-                  value={formData.tags}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"
-                  placeholder="tag1, tag2, tag3..."
-                />
-                <p className="text-sm text-gray-400 mt-1">
-                  Séparez les tags par des virgules (ex: actualité, événement, important)
+                <p className="text-xs text-gray-400 mt-1">
+                  Lien qui s'ouvrira quand les utilisateurs cliquent sur le post
                 </p>
               </div>
             </div>

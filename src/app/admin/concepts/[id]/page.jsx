@@ -221,8 +221,8 @@ export default function EditConcept({ params }) {
                     key={option.value}
                     className={`flex items-center space-x-2 p-2 border rounded cursor-pointer ${
                       formData.categoryColor === option.value 
-                        ? 'border-yellow-500 bg-yellow-50' 
-                        : 'border-gray-300'
+                        ? 'border-yellow-500 bg-yellow-500 bg-opacity-20' 
+                        : 'border-gray-600'
                     }`}
                   >
                     <input

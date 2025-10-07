@@ -6,49 +6,60 @@ import HeroBg from '@/assets/hero-bg.png';
 import PodcastThumbnail from '@/assets/podcast-thumbnail.png';
 import Footer from './footer';
 import { Anton, Lato } from 'next/font/google';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PodcastsSection from './components/PodcastsSection';
 import NavBar from './components/NavBar';
-import testimage from '../assets/test.jpg'
-import testimage2 from '../assets/test2.jpg'
-import testimage3 from '../assets/test3.jpg'
-import testimage4 from '../assets/test4.jpg'
 import actualités from '../assets/actualités.jpg'
 import actualités2 from '../assets/actualités2.jpg'
 import actualités3 from '../assets/actualités3.jpg'
 import Link from 'next/link';
+
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const contentCards = [
-    {
-      id: 1,
-      image: testimage,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Nassim talks",
-      categoryColor: "bg-[#FFB43D]"
-    },
-    {
-      id: 2,
-      image: testimage2,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Ach ban lik ?",
-      categoryColor: "bg-green-500"
-    },
-    {
-      id: 3,
-      image: testimage3,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Chno lblan ?",
-      categoryColor: "bg-blue-500"
-    },
-    {
-      id: 4,
-      image: testimage4,
-      title: "أخرهم شرقي وأبرزهم بنزيما.. ما أشهر صفقات منجم ليون؟",
-      category: "Fast Foot",
-      categoryColor: "bg-orange-500"
-    },
-  ];
+  const [contentCards, setContentCards] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchContentCards();
+  }, []);
+
+  const handlePostClick = (contentLink) => {
+    if (contentLink) {
+      window.open(contentLink, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const fetchContentCards = async () => {
+    try {
+      const [conceptsRes, newsRes] = await Promise.all([
+        fetch('/api/concepts'),
+        fetch('/api/news')
+      ]);
+      
+      const conceptsData = await conceptsRes.json();
+      const newsData = await newsRes.json();
+      
+      if (conceptsData.success && newsData.success) {
+        // Transform news data to match the expected format and limit to first 4 items
+        const transformedContent = (newsData.data || []).slice(0, 4).map(item => {
+          const concept = (conceptsData.data || []).find(c => c.id === item.conceptId);
+          return {
+            id: item.id,
+            image: { src: item.featuredImage || '/assets/test.jpg' },
+            title: item.title,
+            category: concept ? concept.title : 'Non catégorisé',
+            categoryColor: concept ? concept.categoryColor : 'bg-gray-500',
+            contentLink: item.contentLink
+          };
+        });
+        setContentCards(transformedContent);
+      }
+    } catch (error) {
+      console.error('Failed to fetch content:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const actualitesCards = [
     {
@@ -145,25 +156,40 @@ export default function Home() {
 
           {/* Concepts Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {contentCards.map((card) => (
-              <div key={card.id} className="relative w-full aspect-[9/16] bg-black text-white overflow-hidden rounded-lg">
-                {/* Background Image */}
-                <img
-                  src={card.image.src}
-                  alt="Background"
-                  className="absolute top-0 left-0 w-full h-full object-cover"
-                />
+            {loading ? (
+              // Loading skeleton
+              Array.from({ length: 4 }).map((_, index) => (
+                <div key={index} className="relative w-full aspect-[9/16] bg-gray-800 animate-pulse rounded-lg">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-10">
+                    <div className="h-4 bg-gray-600 rounded mb-2"></div>
+                    <div className="h-6 bg-gray-600 rounded"></div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              contentCards.map((card) => (
+                <div 
+                  key={card.id} 
+                  className="relative w-full aspect-[9/16] bg-black text-white overflow-hidden rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+                  onClick={() => handlePostClick(card.contentLink)}
+                >
+                  {/* Background Image */}
+                  <img
+                    src={card.image.src}
+                    alt="Background"
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                  />
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
 
-                {/* Text Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-10 z-10">
-                  <div className="flex flex-col items-end space-y-2 sm:space-y-3">
-                    <span className={`${card.categoryColor} text-white px-3 sm:px-4 pl-1 py-1 text-xs font-light`} style={{
-                      clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 15% 0%)'
-                    }}>
-                      {card.category}
+                  {/* Text Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-10 z-10">
+                    <div className="flex flex-col items-end space-y-2 sm:space-y-3">
+                      <span className={`${card.categoryColor} text-white px-3 sm:px-4 pl-1 py-1 text-xs font-light`} style={{
+                        clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 15% 0%)'
+                      }}>
+                        {card.category}
                     </span>
                     <h1 className="text-right text-lg sm:text-xl lg:text-2xl font-semibold leading-tight">
                       {card.title}
@@ -171,7 +197,8 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>
