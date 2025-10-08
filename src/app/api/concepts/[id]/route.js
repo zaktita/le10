@@ -30,8 +30,9 @@ function writeConcepts(concepts) {
 // GET - Get specific concept by ID
 export async function GET(request, { params }) {
   try {
+    const { id } = await params
     const concepts = readConcepts()
-    const conceptId = parseInt(params.id)
+    const conceptId = parseInt(id)
     const concept = concepts.find(c => c.id === conceptId)
     
     if (!concept) {
@@ -57,6 +58,7 @@ export async function GET(request, { params }) {
 // PUT - Update specific concept
 export async function PUT(request, { params }) {
   try {
+    const { id } = await params
     const { 
       title, 
       description, 
@@ -76,7 +78,7 @@ export async function PUT(request, { params }) {
     }
 
     const concepts = readConcepts()
-    const conceptId = parseInt(params.id)
+    const conceptId = parseInt(id)
     const conceptIndex = concepts.findIndex(c => c.id === conceptId)
     
     if (conceptIndex === -1) {
@@ -124,8 +126,9 @@ export async function PUT(request, { params }) {
 // DELETE - Delete specific concept
 export async function DELETE(request, { params }) {
   try {
+    const { id } = await params
     const concepts = readConcepts()
-    const conceptId = parseInt(params.id)
+    const conceptId = parseInt(id)
     const conceptIndex = concepts.findIndex(c => c.id === conceptId)
     
     if (conceptIndex === -1) {

@@ -33,23 +33,29 @@ export default function PodcastsSection() {
   const featuredThumbUrl = featuredVideo ? getBestThumbnail(featuredVideo.snippet.thumbnails) : null;
 
   return (
-    <section className="relative bg-black py-20 ">
+    <section className="relative bg-black py-16 sm:py-20 md:py-24 lg:py-32">
       {/* Section Title */}
-      <div className="flex items-center gap-8 mb-24 container mx-auto px-6 pt-12 sm:pt-16 md:pt-20 lg:pt-24">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white flex-shrink-0">
-              Podcasts
-            </h1>
-            <div className="flex-1 border-t border-dotted border-gray-600"></div>
-            <Link href="https://www.youtube.com" passHref target='_blank'>
-            <button
-              variant="outline"
-              className="bg-transparent cursor-pointer border-white text-white hover:bg-white hover:text-black transition-colors duration-300 px-6 py-2 rounded-full flex-shrink-0"
-            >
-              Tout Voir
-            </button>
-            </Link>
-          </div>
-
+   <div className=" container mx-auto px-6 flex items-center justify-between gap-4 mb-12 sm:mb-16 md:mb-20">
+  {/* Left side with title and line */}
+  <div className="flex items-center gap-4 flex-1">
+    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white flex-shrink-0">
+      Podcast
+    </h1>
+    <div className="hidden sm:block flex-1 border-t border-dotted border-gray-600"></div>
+  </div>
+  
+  {/* Button */}
+  <Link href="https://www.youtube.com/@the10off" passHref>
+    <button
+      variant="outline"
+      className="bg-transparent cursor-pointer border border-white text-white hover:bg-white hover:text-black 
+        transition-colors duration-300 px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full flex-shrink-0 
+        text-xs sm:text-sm md:text-base whitespace-nowrap"
+    >
+      Tout Voir
+    </button>
+  </Link>
+</div>
       {/* Conditional Loading/Error/Content Display */}
       {error ? (
         <div className="min-h-[500px] flex items-center justify-center bg-gray-900 text-red-500">Failed to load YouTube videos.</div>
@@ -58,7 +64,7 @@ export default function PodcastsSection() {
       ) : (
         <>
           {/* Featured Video */}
-          <div className=" mx-auto px-6 mb-12">
+          <div className=" mx-auto px-6 mb-12 hidden md:block">
             <div className="relative aspect-video overflow-hidden rounded-lg bg-cover bg-center">
               {/* ReactPlayer for the featured video - always mounted, URL and playing prop controlled */}
               {featuredVideo && (

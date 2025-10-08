@@ -2,20 +2,15 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { isAuthenticated } from '../../utils/auth'
+import withAdminAuth from '../../components/withAdminAuth'
 
-export default function ConceptsAdmin() {
+function ConceptsAdmin() {
   const [concepts, setConcepts] = useState([])
   const [loading, setLoading] = useState(true)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
-    const auth = localStorage.getItem('admin_auth')
-    if (auth !== 'authenticated') {
-      router.push('/admin')
-      return
-    }
-    setIsAuthenticated(true)
     fetchConcepts()
   }, [])
 
@@ -59,10 +54,6 @@ export default function ConceptsAdmin() {
       console.error('Failed to delete concept:', error)
       alert('Erreur lors de la suppression')
     }
-  }
-
-  if (!isAuthenticated) {
-    return <div>Redirection...</div>
   }
 
   return (
@@ -151,3 +142,5 @@ export default function ConceptsAdmin() {
     </div>
   )
 }
+
+export default withAdminAuth(ConceptsAdmin)

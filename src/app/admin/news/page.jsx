@@ -2,20 +2,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import withAdminAuth from '../../components/withAdminAuth'
 
-export default function NewsAdmin() {
+function NewsAdmin() {
   const [news, setNews] = useState([])
   const [loading, setLoading] = useState(true)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
-    const auth = localStorage.getItem('admin_auth')
-    if (auth !== 'authenticated') {
-      router.push('/admin')
-      return
-    }
-    setIsAuthenticated(true)
     fetchNews()
   }, [])
 
@@ -67,10 +61,6 @@ export default function NewsAdmin() {
       month: 'long',
       day: 'numeric'
     })
-  }
-
-  if (!isAuthenticated) {
-    return <div>Redirection...</div>
   }
 
   return (
@@ -167,3 +157,5 @@ export default function NewsAdmin() {
     </div>
   )
 }
+
+export default withAdminAuth(NewsAdmin)

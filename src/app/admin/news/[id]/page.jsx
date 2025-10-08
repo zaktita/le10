@@ -1,10 +1,12 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, use } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import ImageUpload from '../../../components/ImageUpload'
 
 export default function EditNews({ params }) {
+  const resolvedParams = use(params)
+  const { id } = resolvedParams
   const [formData, setFormData] = useState({
     title: '',
     excerpt: '',
@@ -22,7 +24,6 @@ export default function EditNews({ params }) {
   const [saving, setSaving] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const router = useRouter()
-  const { id } = params
 
   useEffect(() => {
     const auth = localStorage.getItem('admin_auth')

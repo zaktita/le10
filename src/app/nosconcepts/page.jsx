@@ -154,7 +154,7 @@ const page = () => {
             filteredCards.map((card, index) => (
               <div 
                 key={card.id} 
-                className="relative w-full aspect-[4/7] bg-black text-white overflow-hidden rounded-lg transform transition-all duration-500 hover:scale-[1.02] cursor-pointer"
+                className="relative w-full aspect-[4/7] bg-black text-white overflow-hidden rounded-lg transform transition-all duration-500 hover:scale-[1.02] cursor-pointer my-2"
                 onClick={() => handlePostClick(card.contentLink)}
                 style={{
                   animation: isLoaded ? `fadeInUp 0.8s ease-out ${600 + index * 120}ms both` : 'none'
@@ -168,12 +168,12 @@ const page = () => {
                 />
 
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
 
                 {/* Text Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-10 z-10">
                   <div className="flex flex-col items-end space-y-2 sm:space-y-3">
-                    <span className={`${card.categoryColor} text-white text-end px-2 sm:px-3 md:px-4 pl-1 py-1 text-xs font-light transform transition-transform duration-300 hover:translate-x-[-5px]`} style={{
+                    <span className={`${card.categoryColor} text-white  px-4 py-2 text-xs font-light transform transition-transform duration-300 hover:translate-x-[-5px]`} style={{
                       clipPath: 'polygon(100% 0%, 100% 100%, 0% 100%, 15% 0%)'
                     }}>
                       {card.category}

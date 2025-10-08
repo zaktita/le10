@@ -30,8 +30,9 @@ function writeNews(news) {
 // GET - Get specific article by ID
 export async function GET(request, { params }) {
   try {
+    const { id } = await params
     const news = readNews()
-    const article = news.find(n => n.id.toString() === params.id)
+    const article = news.find(n => n.id.toString() === id)
     
     if (!article) {
       return NextResponse.json(
@@ -56,6 +57,7 @@ export async function GET(request, { params }) {
 // PUT - Update specific article
 export async function PUT(request, { params }) {
   try {
+    const { id } = await params
     const { 
       title, 
       excerpt, 
@@ -85,7 +87,7 @@ export async function PUT(request, { params }) {
     }
 
     const news = readNews()
-    const articleIndex = news.findIndex(n => n.id.toString() === params.id)
+    const articleIndex = news.findIndex(n => n.id.toString() === id)
     
     if (articleIndex === -1) {
       return NextResponse.json(
@@ -135,8 +137,9 @@ export async function PUT(request, { params }) {
 // DELETE - Delete specific article
 export async function DELETE(request, { params }) {
   try {
+    const { id } = await params
     const news = readNews()
-    const articleIndex = news.findIndex(n => n.id.toString() === params.id)
+    const articleIndex = news.findIndex(n => n.id.toString() === id)
     
     if (articleIndex === -1) {
       return NextResponse.json(

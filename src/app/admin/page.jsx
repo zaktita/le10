@@ -1,16 +1,18 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { login, logout, isAuthenticated } from '../utils/auth'
 
 export default function AdminDashboard() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuth, setIsAuth] = useState(false)
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const [stats, setStats] = useState({ concepts: 0, news: 0 })
 
   useEffect(() => {
-    const auth = localStorage.getItem('admin_auth')
-    if (auth === 'authenticated') {
-      setIsAuthenticated(true)
+    if (isAuthenticated()) {
+      setIsAuth(true)
       fetchStats()
     }
   }, [])
@@ -34,49 +36,83 @@ export default function AdminDashboard() {
     }
   }
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
-    // Simple password protection - replace with your actual password
-    if (password === 'admin123') {
-      localStorage.setItem('admin_auth', 'authenticated')
-      setIsAuthenticated(true)
-      fetchStats()
-    } else {
-      alert('Mot de passe incorrect')
+    setLoading(true)
+    setError('')
+    
+    try {
+      const success = login(password)
+      if (success) {
+        setIsAuth(true)
+        setPassword('')
+        await fetchStats()
+      }
+    } catch (error) {
+      setError(error.message)
+    } finally {
+      setLoading(false)
     }
   }
 
   const handleLogout = () => {
-    localStorage.removeItem('admin_auth')
-    setIsAuthenticated(false)
+    logout()
+    setIsAuth(false)
     setPassword('')
   }
 
-  if (!isAuthenticated) {
+  if (!isAuth) {
     return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-          <h1 className="text-2xl font-bold text-center mb-6">Admin LE 10</h1>
-          <form onSubmit={handleLogin}>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center p-4">
+        <div className="bg-gray-800 border border-gray-700 p-8 rounded-xl shadow-2xl max-w-md w-full">
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-bold text-yellow-400 mb-2">Admin LE 10</h1>
+            <p className="text-gray-400 text-sm">Accès sécurisé au panneau d'administration</p>
+          </div>
+          
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-white text-sm font-medium mb-2">
                 Mot de passe
               </label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-white placeholder-gray-400"
+                placeholder="Entrez le mot de passe"
                 required
+                disabled={loading}
               />
             </div>
+            
+            {error && (
+              <div className="bg-red-900 border border-red-700 text-red-200 px-4 py-3 rounded-lg text-sm">
+                {error}
+              </div>
+            )}
+            
             <button
               type="submit"
-              className="w-full bg-yellow-500 text-black font-bold py-2 px-4 rounded hover:bg-yellow-400 transition-colors"
+              disabled={loading}
+              className="w-full bg-yellow-500 text-black font-bold py-3 px-4 rounded-lg hover:bg-yellow-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
-              Se connecter
+              {loading ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-black mr-2"></div>
+                  Connexion...
+                </>
+              ) : (
+                'Se connecter'
+              )}
             </button>
           </form>
+          
+          <div className="mt-6 pt-6 border-t border-gray-700 text-center">
+            <p className="text-gray-500 text-xs">
+              🔒 Accès protégé par authentification
+            </p>
+          </div>
         </div>
       </div>
     )
